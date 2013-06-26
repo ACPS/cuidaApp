@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Strings related to login -->
+	<string name="activity_category_title">Categorías</string>
+    <string name="activity_category_intro">Elige uno de los activos\ndisponibles en esta ciudad.</string>
+   
+</resources>

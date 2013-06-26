@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp" >
+
+    <Button
+        android:id="@+id/top_bar_btn_back"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_btn_top_bar_back"
+        android:shadowColor="#CCCCCC"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2" />
+
+    <Button
+        android:id="@+id/top_bar_btn_close"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_btn_top_bar_close"
+        android:shadowColor="#CCCCCC"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2" />
+
+    <Button
+        android:id="@+id/top_bar_btn_options"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignBaseline="@+id/top_bar_btn_close"
+        android:layout_alignBottom="@+id/top_bar_btn_close"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/top_bar_btn_close"
+        android:background="@drawable/bg_btn_top_bar_options"
+        android:shadowColor="#CCCCCC"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2" />
+
+</RelativeLayout>

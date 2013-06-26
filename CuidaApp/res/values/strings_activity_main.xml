@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Strings related to login -->
+
+    <string name="activity_main_btn_send_report">Enviar reporte</string>
+    <string name="activity_main_btn_actives">Mis activos</string>
+    <string name="activity_main">Menú principal</string>
+</resources>

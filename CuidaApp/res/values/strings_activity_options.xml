@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="activity_options_btn_logout">Cerrar sesión</string>
+    <string name="activity_options_btn_update">Actualizar</string>
+    <string name="activity_options_hint_password_actual">Contraseña actual</string>
+    <string name="activity_options_success_update">¡Su información se ha actualizado!</string>
+    <string name="activity_options_btn_help">Ir a la web</string>
+    <string name="activity_options_btn_statistics">Estadisticas</string>
+    <string name="activity_options_edit_dats">Editar datos personales</string>
+
+</resources>

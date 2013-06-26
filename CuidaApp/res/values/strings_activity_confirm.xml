@@ -1,0 +1,11 @@
+<resources>
+
+	<string name="activity_confirm">Reporte</string>
+    <string name="activity_confirm_ubication">Caneca\nPeatonal</string>
+    <string name="activity_confirm_adress">Calle 46 N° 74-25</string>
+    <string name="activity_confirm_description">HAGA SU REPORTE</string>
+    <string name="activity_confirm_btn_report">Reportar</string>
+    <string name="activity_confirm_btn_cancel">En otro momento</string>
+    <string name="activity_confirm_error_description_required">Por favor ingrese una descripción</string>
+    <string name="activity_confirm_error_description_invalid">Por favor ingrese una descripción valida</string>
+</resources>

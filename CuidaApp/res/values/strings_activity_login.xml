@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Strings related to login -->
+
+    <string name="activity_login_error_session">Dirección de correo electrónico y/o contraseña no son correctos.</string>
+    <string name="activity_login_btn_sign_in">Enviar Datos</string>
+    <string name="activity_login_btn_forget_password">¿Olvidó su contraseña?</string>
+    <string name="activity_login_error">Se ha presentado un inconveniente al iniciar sesión, ¡Por favor vuelva a intentar más tarde!</string>
+	<string name="activity_login_hint_username">Nombre de Usuario</string>
+	<string name="activity_login_hint_password">Contraseña</string>
+	<string name="activity_login_btn_register">Registrese</string>
+	<string name="activity_login_init">Inicio sesión</string>
+</resources>

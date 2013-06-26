@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+        <string name="activity_sending_send">Enviando\nReporte</string>
+        <string name="activity_sending_wait">Espere un momento\npor favor.</string>
+</resources>

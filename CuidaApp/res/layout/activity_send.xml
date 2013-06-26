@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo" />
+
+    <fragment
+        android:id="@+id/top_bar"
+        android:name="cuidaApp.views.TopBarFragmet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout="@layout/top_bar" />
+
+    <RelativeLayout
+        android:id="@+id/opciones_camara"
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bg_actions_buttons" >
+
+            <Button
+                android:id="@+id/btn_pic"
+                android:layout_width="136.5dp"
+                android:layout_height="57dp"
+                android:layout_alignBaseline="@+id/btn_done"
+                android:layout_alignBottom="@+id/btn_done"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_btn_camera"
+                android:onClick="takePicture"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/btn_done"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/btn_pic"
+                android:background="@drawable/bg_btn_ok"
+                android:onClick="BtnDoneClic"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/btn_done"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/btn_pic"
+                android:background="@drawable/bg_btn_error"
+                android:onClick="BtnCancelClic"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/container_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@id/opciones_camara"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/top_bar"
+        android:layout_margin="10dp" >
+
+        <LinearLayout
+            android:id="@+id/container_image_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/camera_surface"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" >
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

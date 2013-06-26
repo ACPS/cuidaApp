@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="activity_verification_help">Ingrese su código de seguridad en las siguientes casillas.</string>
+    <string name="activity_verification_btn_confirtmation">Confirmar</string>
+    <string name="activity_verification_btn_no_email">¿No ha recibido el correo?</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+
+    
+
+	<string name="activity_register_btn_register">Registrar</string>
+	  <string name="activity_register_alert_titlle"> Registro </string>
+    <string name="activity_register_alert_message">Se le ha enviado un correo electrónico de confirmación de registro, con un código de seguridad.</string>
+    <string name="create_account_title">Ingrese sus datos para crear su cuenta personal</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="activity_code_problems_help">Si tiene problemas con el número reenviar código de seguridad.</string>
+    <string name="activity_code_problems_btn_next">Continuar</string>
+    <string name="activity_code_problems_alert_titlle"> Validar cuenta</string>
+    <string name="activity_code_problems_alert_message">Se le ha enviado un correo electrónico con un código de seguridad para validar su cuenta.</string>
+</resources>

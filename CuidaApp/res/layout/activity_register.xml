@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/ImageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo" />
+
+    <fragment
+        android:id="@+id/top_bar"
+        android:name="cuidaApp.views.TopBarFragmet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout="@layout/top_bar" />
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/create_account_title"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+         android:textColor="#FFFFFF"
+        
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="false"
+        android:layout_below="@id/help"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input_top"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txt_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_username"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/LinearLayout1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_input_medium"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txt_lastname"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_userlastname"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/LinearLayout2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_input_medium"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txt_passactual"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/LinearLayout3"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_input_medium"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txt_newpass"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/LinearLayout4"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_input_bottom"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txt_repeatnewpa"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_repeat_password"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/LinearLayout5"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_send"
+        android:onClick="onClicIngresar"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/activity_register_btn_register"
+        android:textColor="#1E5A87"
+        android:textStyle="bold" />
+
+</RelativeLayout>
