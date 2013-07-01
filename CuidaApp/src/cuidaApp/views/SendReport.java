@@ -105,7 +105,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 	
 	
 	public void BtnDoneClic(View v){
-		mPreview.releaseCamara();
+		
 		ConfirmController.getInstance().loadActives(this);
 	}
 	

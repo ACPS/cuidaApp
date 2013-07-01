@@ -73,14 +73,14 @@ public class Report extends Activity implements LocationListener,
 
 		
 
-        ImageCacheParams cacheParams = new ImageCacheParams(this, IMAGE_CACHE_DIR);
-
-        cacheParams.setMemCacheSizePercent(0.25f); // Set memory cache to 25% of app memory
-
-        mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
-        // The ImageFetcher takes care of loading images into our ImageView children asynchronously
-        mImageFetcher = new ImageFetcher(this, mImageThumbSize);
-        mImageFetcher.setLoadingImage(R.drawable.empty_photo);
+//        ImageCacheParams cacheParams = new ImageCacheParams(this, IMAGE_CACHE_DIR);
+//
+//        cacheParams.setMemCacheSizePercent(0.25f); // Set memory cache to 25% of app memory
+//
+//        mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
+//        // The ImageFetcher takes care of loading images into our ImageView children asynchronously
+//        mImageFetcher = new ImageFetcher(this, mImageThumbSize);
+//        mImageFetcher.setLoadingImage(R.drawable.empty_photo);
 //        mImageFetcher.addImageCache((FragmentManager)this, cacheParams);
         
 		addMarkers();
@@ -166,7 +166,7 @@ public class Report extends Activity implements LocationListener,
 			
 			
 			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-					"Posici—n actual").icon(BitmapDescriptorFactory.fromResource(R.drawable.empty_photo)));
+					"Posici—n actual"));
 			
 			marker.setDraggable(true);
 			

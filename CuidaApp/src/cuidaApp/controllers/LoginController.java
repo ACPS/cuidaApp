@@ -105,9 +105,7 @@ public class LoginController {
 							Trace.i(TAG, errors.toString());
 							CommonGlobals.hideProgess();
 //							CommonGlobals.show_alert(context, errors.get(0).toString());
-							AppGlobal.getInstance().dispatcher
-							.open((Activity) context,											
-									"main", true);
+							
 						}
 
 					} catch (JSONException e) {

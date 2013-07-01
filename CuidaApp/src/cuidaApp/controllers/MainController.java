@@ -84,7 +84,7 @@ private final String TAG = "ChangePasswordController";
 							
 							CommonGlobals.show_alert(context, context.getString(R.string.error_global));
 							CommonGlobals.hideProgess();
-							AppGlobal.getInstance().dispatcher.open((Activity) context, "report", true);
+							
 						}
 
 					} catch (JSONException e) {
