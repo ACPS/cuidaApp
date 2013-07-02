@@ -182,7 +182,8 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
         final Intent i = new Intent(getActivity(), SendReport.class);
 //        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
         Categoria Cat =(Categoria)parent.getItemAtPosition(position);
-        ManagerController.getInstance().setSelectedCategory(Integer.parseInt(Cat.getId()));
+        Cat.DownloadIcon();
+        ManagerController.getInstance().setSelectedCategory(Cat);
         Log.i("ImageGridFragment",Cat.getName());
         if (Utils.hasJellyBean()) {
             // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may

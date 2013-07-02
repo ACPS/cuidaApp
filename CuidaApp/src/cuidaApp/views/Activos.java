@@ -23,5 +23,7 @@ public class Activos extends Activity{
         startActivity(intent);
         finish();
  	}
+
+	
 	
 }

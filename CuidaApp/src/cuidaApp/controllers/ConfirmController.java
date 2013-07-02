@@ -46,11 +46,10 @@ public class ConfirmController {
    public void loadActives(final Context context){
 		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("id_category", ManagerController.getInstance().getSelectedCategory()+""));
+		params.add(new BasicNameValuePair("id_category", ManagerController.getInstance().getSelectedCategory().getId()+""));
 		params.add(new BasicNameValuePair("lat", ListenerGPS.getInstance().latitud+""));
 		params.add(new BasicNameValuePair("lon", ListenerGPS.getInstance().longitud+""));
-		Log.i("ConfirmController", ListenerGPS.getInstance().longitud+"");
-		Log.i("ConfirmController", ListenerGPS.getInstance().latitud+"");
+		
 		CommonGlobals.showProgess(context);
 		DoRest restloadCategory = new DoRest(AppConfig.ACTIVES_URL,
 				Verbs.POST, params);

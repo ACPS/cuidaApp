@@ -1,15 +1,11 @@
 package cuidaApp.views;
 
-import org.apache.james.mime4j.io.PositionInputStream;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.bitmapfun.provider.Categoria;
-import android.bitmapfun.provider.Images;
-import android.bitmapfun.util.ImageCache.ImageCacheParams;
-import android.bitmapfun.util.ImageFetcher;
-import android.bitmapfun.util.ImageWorker;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,7 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 
 import com.example.cuidaapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,7 +26,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import cuidaApp.controllers.ConfirmController;
-import cuidaApp.controllers.InternetCacheController;
+import cuidaApp.controllers.ManagerController;
 import cuidaApp.models.Activo;
 public class Report extends Activity implements LocationListener,
 		OnClickListener {
@@ -39,9 +34,7 @@ public class Report extends Activity implements LocationListener,
 	private GoogleMap mMap;
 	private LocationManager locationManager;
 	private Marker marker;
-	private static final String IMAGE_CACHE_DIR = "thumbs";
-	private ImageFetcher mImageFetcher;
-	private int mImageThumbSize;
+	
 	
 	
 	@SuppressLint("NewApi")
@@ -110,8 +103,22 @@ public class Report extends Activity implements LocationListener,
 		for(Activo act: ConfirmController.getInstance().getActivos()){
 			latlon = new LatLng(act.getLat(),
 					act.getLon());
+			Bitmap icon=ManagerController.getInstance().getSelectedCategory().getNormal();
 			
-			mMap.addMarker(new MarkerOptions().position(latlon));
+			if(act.getEstado().equalsIgnoreCase("normal")){
+				icon=ManagerController.getInstance().getSelectedCategory().getNormal();
+			}
+			if(act.getEstado().equalsIgnoreCase("reported")){
+				icon=ManagerController.getInstance().getSelectedCategory().getReported();
+			}
+			if(act.getEstado().equalsIgnoreCase("attended")){
+				icon=ManagerController.getInstance().getSelectedCategory().getAttended();
+			}
+			if(act.getEstado().equalsIgnoreCase("repaired")){
+				icon=ManagerController.getInstance().getSelectedCategory().getRepaired();
+			}
+			
+			mMap.addMarker(new MarkerOptions().position(latlon).icon(BitmapDescriptorFactory.fromBitmap(icon)));
 			
 			
 			
@@ -144,10 +151,11 @@ public class Report extends Activity implements LocationListener,
 
 	
 	public Activo getCategory(LatLng posicion){
-		
-		for(Activo act:  ConfirmController.getInstance().getActivos()){
-			
-			if((posicion.latitude==act.getLat()&&(posicion.longitude==act.getLon()))){
+		LatLng latlong;
+		List<Activo> activos= ConfirmController.getInstance().getActivos();
+		for(Activo act:  activos){
+			latlong=new LatLng(act.getLat(), act.getLon());
+			if((posicion.equals(latlong))){
 				Log.i("coordenada", act.getLat()+ "- "+act.getLon());
 				return act;
 			}else{
@@ -160,31 +168,32 @@ public class Report extends Activity implements LocationListener,
 
 	@Override
 	public void onLocationChanged(Location location) {
-		LatLng latlon = new LatLng(location.getLatitude(),
-				location.getLongitude());
-		if (marker == null) {
-			
-			
-			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-					"Posici—n actual"));
-			
-			marker.setDraggable(true);
-			
+//		LatLng latlon = new LatLng(location.getLatitude(),
+//				location.getLongitude());
 		
-		} else {
-			marker.setPosition(latlon);
-		}
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
-				new CancelableCallback() {
-
-					@Override
-					public void onFinish() {
-					}
-
-					@Override
-					public void onCancel() {
-					}
-				});
+//		if (marker == null) {
+//			
+//			
+//			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
+//					"Posici—n actual"));
+//			
+//			marker.setDraggable(true);
+//			
+//		
+//		} else {
+//			marker.setPosition(latlon);
+//		}
+//		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
+//				new CancelableCallback() {
+//
+//					@Override
+//					public void onFinish() {
+//					}
+//
+//					@Override
+//					public void onCancel() {
+//					}
+//				});
 	}
 
 	@Override

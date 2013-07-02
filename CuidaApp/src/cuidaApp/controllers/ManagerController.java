@@ -5,7 +5,7 @@ package cuidaApp.controllers;
 import java.util.LinkedList;
 import java.util.List;
 
-
+import android.bitmapfun.provider.Categoria;
 import android.graphics.Bitmap;
 
 /**
@@ -16,7 +16,7 @@ public class ManagerController {
 
 	public final String PhoneModel = android.os.Build.MODEL;
 	public final String AndroidVersion = android.os.Build.VERSION.RELEASE;
-	private int selectedCategory;
+	private Categoria selectedCategory;
 	private Bitmap imageTemp;
 	private List<Bitmap> images;
 	private String latitude;
@@ -36,7 +36,7 @@ public class ManagerController {
 
 	private ManagerController() {
 		this.images = new LinkedList<Bitmap>();
-		this.selectedCategory = 1;
+		this.selectedCategory = null;
 		this.previewing = false;
 		this.longitude = "0";
 		this.latitude = "0";
@@ -48,7 +48,7 @@ public class ManagerController {
 		this.latitude = "0";
 		this.clearImages();
 		this.previewing = false;
-		this.selectedCategory = 0;
+		this.selectedCategory = null;
 		this.address = "";
 		imageTemp=null;
 	}
@@ -98,11 +98,11 @@ public class ManagerController {
 		this.address = address;
 	}
 
-	public int getSelectedCategory() {
+	public Categoria getSelectedCategory() {
 		return selectedCategory;
 	}
 
-	public void setSelectedCategory(int selectedCategory) {
+	public void setSelectedCategory(Categoria selectedCategory) {
 		this.selectedCategory = selectedCategory;
 	}
 

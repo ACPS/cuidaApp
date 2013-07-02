@@ -118,7 +118,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		btn_take_a_pic.setEnabled(true);
 		
 		showOptions(View.GONE);
-		ManagerController.getInstance().setSelectedCategory(0);
+		
 		ManagerController.getInstance().setPreviewing(true);
 		//ListenerGPS.getInstance().obtenerUbicacion();
 		btn_take_a_pic.setVisibility(View.VISIBLE);
