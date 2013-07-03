@@ -13,7 +13,7 @@
         android:src="@drawable/fondo" />
 
     <cuidaApp.common.TypefaceTextView
-        android:id="@+id/textView1"
+        android:id="@+id/tittle_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -27,7 +27,7 @@
         android:id="@+id/container_image"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_below="@id/textView1"
+        android:layout_below="@id/tittle_category"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="@drawable/login_user"

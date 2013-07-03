@@ -5,6 +5,8 @@ package cuidaApp.controllers;
 import java.util.LinkedList;
 import java.util.List;
 
+import cuidaApp.models.Activo;
+
 import android.bitmapfun.provider.Categoria;
 import android.graphics.Bitmap;
 
@@ -17,12 +19,13 @@ public class ManagerController {
 	public final String PhoneModel = android.os.Build.MODEL;
 	public final String AndroidVersion = android.os.Build.VERSION.RELEASE;
 	private Categoria selectedCategory;
+	private Activo selectedActivo;
 	private Bitmap imageTemp;
 	private List<Bitmap> images;
 	private String latitude;
 	private String longitude;
 	private static ManagerController instance;
-	private String address;
+	private String description;
 	private boolean responseEvent;
 	private boolean previewing;
 	
@@ -49,7 +52,7 @@ public class ManagerController {
 		this.clearImages();
 		this.previewing = false;
 		this.selectedCategory = null;
-		this.address = "";
+		this.description = "";
 		imageTemp=null;
 	}
 
@@ -90,14 +93,7 @@ public class ManagerController {
 		this.longitude = longitude;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
+	
 	public Categoria getSelectedCategory() {
 		return selectedCategory;
 	}
@@ -144,6 +140,18 @@ public class ManagerController {
 		this.previewing = previewing;
 	}
 
+	public Activo getSelectedActivo() {
+		return selectedActivo;
+	}
 	
+	public void setSelectedActivo(Activo selectedActivo) {
+		this.selectedActivo = selectedActivo;
+	}
 
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

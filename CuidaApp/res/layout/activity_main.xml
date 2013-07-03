@@ -24,7 +24,7 @@
         android:id="@+id/button1"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_below="@id/textView1"
+        android:layout_below="@id/tittle_category"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="@drawable/bg_btn_send_report"
@@ -47,7 +47,7 @@
         android:textStyle="bold" />
 
     <cuidaApp.common.TypefaceTextView
-        android:id="@+id/textView1"
+        android:id="@+id/tittle_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_bar"

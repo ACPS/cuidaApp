@@ -72,9 +72,9 @@ public class SendingController {
 
 		try {
 
-			String addres = ManagerController.getInstance().getAddress();
-			if (addres == null) {
-				addres = "";
+			String description = ManagerController.getInstance().getDescription();
+			if (description == null) {
+				description = "";
 			}
 
 			entity.addPart("application_token", new StringBody(
@@ -89,11 +89,11 @@ public class SendingController {
 			entity.addPart("event[device_model]", new StringBody(
 					ManagerController.getInstance().PhoneModel + " - "
 							+ ManagerController.getInstance().AndroidVersion));
-			entity.addPart("event[category_id]", new StringBody(
-					ManagerController.getInstance().getSelectedCategory() + ""));
-			entity.addPart("event[address_description]", new StringBody(addres));
+			entity.addPart("event[category_id]", new StringBody("1"));
+			entity.addPart("event[address_description]", new StringBody(""));
 			entity.addPart("event[data]", new StringBody(""));
-			entity.addPart("event[description]", new StringBody(""));
+			entity.addPart("event[description]", new StringBody(description));
+			entity.addPart("event[active_id]", new StringBody(ManagerController.getInstance().getSelectedActivo().getId()+""));
 
 			entityDone = true;
 

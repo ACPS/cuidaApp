@@ -106,11 +106,17 @@ public class Categoria {
 	}
 	
 	public void DownloadIcon(){
-		Log.i("aaa",icon_normal);
-		new ImageDownloader().execute(icon_normal);
-//		new ImageDownloader().execute(icon_repaired);
-//		new ImageDownloader().execute(icon_reported);
-//		new ImageDownloader().execute(icon_attended);
+		if(icon_normal!=null)
+			new ImageDownloader().execute(icon_normal);
+		
+		if (icon_repaired!=null)
+			new ImageDownloader().execute(icon_repaired);
+		
+		if(icon_reported!=null)
+			new ImageDownloader().execute(icon_reported);
+		
+		if(icon_attended!=null)
+			new ImageDownloader().execute(icon_attended);
 	}
 	private class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
 

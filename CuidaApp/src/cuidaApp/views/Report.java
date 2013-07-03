@@ -1,5 +1,6 @@
 package cuidaApp.views;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -12,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 
 import com.example.cuidaapp.R;
@@ -28,6 +30,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.models.Activo;
+import cuidaApp.util.AppConfig;
+import cuidaApp.util.AppGlobal;
 public class Report extends Activity implements LocationListener,
 		OnClickListener {
 
@@ -41,9 +45,11 @@ public class Report extends Activity implements LocationListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_report);
 	
-
+		
 		// === Buttons
 
 		
@@ -118,8 +124,11 @@ public class Report extends Activity implements LocationListener,
 				icon=ManagerController.getInstance().getSelectedCategory().getRepaired();
 			}
 			
-			mMap.addMarker(new MarkerOptions().position(latlon).icon(BitmapDescriptorFactory.fromBitmap(icon)));
-			
+			if(icon!=null){
+				mMap.addMarker(new MarkerOptions().position(latlon).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+			}else{
+				mMap.addMarker(new MarkerOptions().position(latlon));
+			}
 			
 			
 		}
@@ -130,8 +139,15 @@ public class Report extends Activity implements LocationListener,
 			public boolean onMarkerClick(Marker marker) {
 				
 				Log.i("REPORT",marker.getPosition().toString());
-				Activo act = getCategory(marker.getPosition());
-//				Log.i("Report",act.getId()+"");
+				Activo act = getActive(marker.getPosition());
+
+				if(act!=null){
+					ManagerController.getInstance().setSelectedActivo(act);
+					AppGlobal.getInstance().dispatcher.open(Report.this, "confirm",false);
+				}else{
+					Log.i("REPORT","null");
+				}
+				
 				
 				return false;
 			}
@@ -150,17 +166,20 @@ public class Report extends Activity implements LocationListener,
 	}
 
 	
-	public Activo getCategory(LatLng posicion){
-		LatLng latlong;
+	public Activo getActive(LatLng posicion){
+		
+		DecimalFormat decimal= new DecimalFormat("0.000000");
 		List<Activo> activos= ConfirmController.getInstance().getActivos();
 		for(Activo act:  activos){
-			latlong=new LatLng(act.getLat(), act.getLon());
-			if((posicion.equals(latlong))){
-				Log.i("coordenada", act.getLat()+ "- "+act.getLon());
-				return act;
-			}else{
-				Log.i("no es coordenada", act.getLat()+ " - "+posicion.latitude+" -"+act.getLon()+" -"+posicion.longitude);
+			
+			//Log.i("Posición:",decimal.format(act.getLat())+"-"+pos);
+			if(decimal.format(act.getLat()).equals(decimal.format(posicion.latitude))){
+				
+				if(decimal.format(act.getLon()).equals(decimal.format(posicion.longitude))){
+					return act;
+				}
 			}
+			
 		}
 		return null;
 	}
