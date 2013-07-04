@@ -129,6 +129,11 @@
             android:name="cuidaApp.views.DetailActive"
             android:screenOrientation="portrait">
         </activity>
+        
+          <activity
+            android:name="cuidaApp.views.PhotoCapture"
+            android:screenOrientation="portrait">
+        </activity>
          
     </application>
 

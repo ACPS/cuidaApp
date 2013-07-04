@@ -30,9 +30,12 @@ public class DetailActive extends FragmentActivity {
 		camera.bringToFront();
 		
 		TextView tittle_category = (TextView) findViewById(R.id.tittle_category);
-		
-		
 		TextView address_active = (TextView) findViewById(R.id.address_active);
+		if(ManagerController.getInstance().getSelectedActivo()!=null){
+			tittle_category.setText(ManagerController.getInstance().getSelectedActivo().getName_category());
+			address_active.setText(ManagerController.getInstance().getSelectedActivo().getAdress());
+		}
+		
 		
 		
 	}

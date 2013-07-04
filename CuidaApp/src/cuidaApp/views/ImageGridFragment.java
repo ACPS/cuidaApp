@@ -179,7 +179,7 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
     @TargetApi(16)
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        final Intent i = new Intent(getActivity(), SendReport.class);
+        final Intent i = new Intent(getActivity(), PhotoCapture.class);
 //        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
         Categoria Cat =(Categoria)parent.getItemAtPosition(position);
         Cat.DownloadIcon();

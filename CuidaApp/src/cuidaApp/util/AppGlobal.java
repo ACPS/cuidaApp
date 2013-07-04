@@ -31,7 +31,7 @@ public class AppGlobal {
 		dispatcher.addHandler("main",
 				"cuidaApp.views.MainActivity");
 		dispatcher.addHandler("take",
-				"cuidaApp.views.SendReport");
+				"cuidaApp.views.PhotoCapture");
 		dispatcher.addHandler("activos",
 				"cuidaApp.views.Actives");
 		dispatcher.addHandler("detail",

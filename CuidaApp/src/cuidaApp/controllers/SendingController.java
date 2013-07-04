@@ -312,7 +312,7 @@ public class SendingController {
 							ManagerController.getInstance().reset();
 							AppGlobal.getInstance().dispatcher.open(
 									((Activity) context), "thanks", true);
-							ListenerGPS.getInstance().obtenerUbicacion(context);
+							
 							sending = false;
 							//
 

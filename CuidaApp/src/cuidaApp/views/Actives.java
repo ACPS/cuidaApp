@@ -135,7 +135,7 @@ public class Actives extends Activity implements LocationListener,
 				return false;
 			}
 		});
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 18), 200,
 				new CancelableCallback() {
 
 					@Override
@@ -150,8 +150,8 @@ public class Actives extends Activity implements LocationListener,
 
 	public Activo getActive(LatLng posicion) {
 
-		DecimalFormat decimal = new DecimalFormat("0.000000");
-		List<Activo> activos = ConfirmController.getInstance().getActivos();
+		DecimalFormat decimal = new DecimalFormat("0.00000");
+		List<Activo> activos = MainController.getInstance().getActivos();
 		for (Activo act : activos) {
 
 			// Log.i("Posición:",decimal.format(act.getLat())+"-"+pos);
