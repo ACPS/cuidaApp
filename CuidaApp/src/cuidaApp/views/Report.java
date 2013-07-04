@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.RelativeLayout;
 
 import com.example.cuidaapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -54,6 +55,8 @@ public class Report extends Activity implements LocationListener,
 
 		
 		// === Map
+		
+	
 
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(
 				R.id.report_map)).getMap();

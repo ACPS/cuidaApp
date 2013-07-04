@@ -33,7 +33,7 @@ public class AppGlobal {
 		dispatcher.addHandler("take",
 				"cuidaApp.views.SendReport");
 		dispatcher.addHandler("activos",
-				"cuidaApp.views.Activos");
+				"cuidaApp.views.Actives");
 		dispatcher.addHandler("confirm",
 				"cuidaApp.views.Confirm");
 		dispatcher.addHandler("report",

@@ -11,6 +11,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -26,7 +27,9 @@ import cuidaApp.common.ListenerGPS;
 import cuidaApp.common.TopBar;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
+import cuidaApp.controllers.PreferencesController;
 import cuidaApp.controllers.SurfaceController;
+import cuidaApp.util.AppGlobal;
 
 public class SendReport extends FragmentActivity implements SensorEventListener {
 
@@ -201,5 +204,14 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 	public void stopSensorManager() {
 		sensormanager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		sensormanager.unregisterListener(this);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AppGlobal.getInstance().dispatcher.open(
+						SendReport.this,"category", true);
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }
