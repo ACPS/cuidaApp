@@ -26,6 +26,7 @@ import com.nerdcore.logs.Trace;
 import com.nerdcore.utils.ImageUitls;
 
 import cuidaApp.common.CommonGlobals;
+import cuidaApp.common.ListenerGPS;
 
 @SuppressLint("NewApi")
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -305,13 +306,13 @@ public class SurfaceController extends SurfaceView implements
 					image_preview.setVisibility(View.VISIBLE);
 
 					// Detener GPS
-					//ListenerGPS.getInstance().stopListener();
+					ListenerGPS.getInstance().stopListener();
 
 					// Obtener coordenadas
-//					ManagerController.getInstance().setLatitude(
-//							ListenerGPS.getInstance().latitud + "");
-//					ManagerController.getInstance().setLongitude(
-//							ListenerGPS.getInstance().longitud + "");
+					ManagerController.getInstance().setLatitude(
+							ListenerGPS.getInstance().latitud + "");
+					ManagerController.getInstance().setLongitude(
+							ListenerGPS.getInstance().longitud + "");
 
 					camera_surface.setVisibility(View.GONE);
 				}

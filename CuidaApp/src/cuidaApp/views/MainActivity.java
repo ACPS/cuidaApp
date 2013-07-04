@@ -2,6 +2,7 @@ package cuidaApp.views;
 
 
 
+import android.bitmapfun.provider.Images;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import com.example.cuidaapp.R;
 import cuidaApp.common.ListenerGPS;
 import cuidaApp.common.TopBar;
 import cuidaApp.controllers.MainController;
+import cuidaApp.util.AppGlobal;
 
 public class MainActivity extends FragmentActivity {
 
@@ -24,7 +26,7 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		TopBar.initializeTopBar(this, View.INVISIBLE, View.VISIBLE, View.VISIBLE,
 				"", "main");
-		ListenerGPS.getInstance().obtenerUbicacion(this);
+		
 	}
 
 	@Override
@@ -36,11 +38,15 @@ public class MainActivity extends FragmentActivity {
 	
 	public void BtnTakePicture(View v){
 //		  AppGlobal.getInstance().dispatcher.open(this, "take", true);
-		if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
-			ListenerGPS.getInstance().stopListener();
-			controller.loadCategory(this);
+		if(Images.imageUrls.size()==0){
+			if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
+				ListenerGPS.getInstance().stopListener();
+				controller.loadCategory(this);
+			}else{
+	//			
+			}
 		}else{
-//			
+			AppGlobal.getInstance().dispatcher.open(this, "category", true);
 		}
 		
 	}

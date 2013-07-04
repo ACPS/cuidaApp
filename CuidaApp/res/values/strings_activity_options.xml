@@ -7,6 +7,7 @@
     <string name="activity_options_success_update">¡Su información se ha actualizado!</string>
     <string name="activity_options_btn_help">Ir a la web</string>
     <string name="activity_options_btn_statistics">Estadisticas</string>
+    <string name="activity_options_btn_tweet">Twitter</string>
     <string name="activity_options_edit_dats">Editar datos personales</string>
 
 </resources>

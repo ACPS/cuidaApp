@@ -36,6 +36,7 @@ import android.util.Log;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
+import cuidaApp.common.ListenerGPS;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
 
@@ -139,12 +140,19 @@ public class SendingController {
 	private String saveImage(Bitmap imagen) {
 
 		String the_path = Environment.getExternalStorageDirectory()
-				+ File.separator + "prohibidoparquear";
+				+ File.separator + "cuidaApp";
 		String uid = UUID.randomUUID().toString();
 		String the_file = the_path + File.separator + uid + ".png";
 
 		OutputStream fout = null;
-
+		
+		boolean success = (new File(the_path)).mkdir(); 
+        if (!success) {
+            Log.i("directory not created", "directory not created");
+        } else {
+            Log.i("directory created", "directory created");
+        }
+		
 		try {
 
 			Log.v("Path", the_file);
@@ -237,6 +245,7 @@ public class SendingController {
 										final int id) {
 									dialog.cancel();
 									sending = false;
+									ManagerController.getInstance().clearImages();
 									AppGlobal.getInstance().dispatcher
 											.open((Activity) context,
 													"confirm", true);
@@ -303,6 +312,7 @@ public class SendingController {
 							ManagerController.getInstance().reset();
 							AppGlobal.getInstance().dispatcher.open(
 									((Activity) context), "thanks", true);
+							ListenerGPS.getInstance().obtenerUbicacion(context);
 							sending = false;
 							//
 

@@ -73,7 +73,6 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_btn_statistics"
                 android:gravity="top"
-                android:onClick="onClickBtnRanking"
                 android:paddingLeft="80dp"
                 android:paddingTop="15dp"
                 android:shadowDx="2"
@@ -88,13 +87,13 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_btn_twitter"
                 android:gravity="top"
-                android:onClick="onClickBtnRanking"
+                android:onClick="onClickBtnTwitter"
                 android:paddingLeft="80dp"
                 android:paddingTop="15dp"
                 android:shadowDx="2"
                 android:shadowDy="-2"
                 android:shadowRadius="2"
-                android:text="@string/activity_options_btn_statistics" />
+                android:text="@string/activity_options_btn_tweet" />
 
             <LinearLayout
                 android:id="@+id/form_update"

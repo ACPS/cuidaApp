@@ -22,11 +22,11 @@ import com.example.cuidaapp.R;
 import com.nerdcore.logs.Trace;
 
 import cuidaApp.common.CommonGlobals;
+import cuidaApp.common.ListenerGPS;
 import cuidaApp.common.TopBar;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.controllers.SurfaceController;
-import cuidaApp.util.AppGlobal;
 
 public class SendReport extends FragmentActivity implements SensorEventListener {
 
@@ -57,7 +57,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		
 		
 		TopBar.initializeTopBar(this, View.VISIBLE, View.VISIBLE, View.VISIBLE,
-				"main", "take");
+				"category", "take");
 		
 		// Create our Preview view and set it as the content of our activity.
 		mPreview = new SurfaceController(this);
@@ -107,6 +107,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 	public void BtnDoneClic(View v){
 		
 		ConfirmController.getInstance().loadActives(this);
+		ListenerGPS.getInstance().obtenerUbicacion(this);
 	}
 	
 	public void BtnCancelClic(View v){
@@ -122,6 +123,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		ManagerController.getInstance().setPreviewing(true);
 		//ListenerGPS.getInstance().obtenerUbicacion();
 		btn_take_a_pic.setVisibility(View.VISIBLE);
+		startSensorManager();
 		//startSensorManager();
 		//Requirements.getInstance().setListenGps(true);
 		//Requirements.getInstance().getBtn_no_gps().setVisibility(View.VISIBLE);

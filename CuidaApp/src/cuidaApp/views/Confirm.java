@@ -63,6 +63,6 @@ public class Confirm extends FragmentActivity {
 	}
 	
 	public void Cancel(View v){
-		AppGlobal.getInstance().dispatcher.open(this, "take", true);
+		AppGlobal.getInstance().dispatcher.open(this, "report", true);
 	}
 }

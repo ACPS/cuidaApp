@@ -22,10 +22,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.Window;
 
 import com.example.cuidaapp.BuildConfig;
 
-import cuidaApp.common.TopBar;
+import cuidaApp.common.Exit;
+import cuidaApp.controllers.PreferencesController;
+import cuidaApp.util.AppGlobal;
 
 
 
@@ -42,11 +45,25 @@ public class ImageGridActivity extends FragmentActivity {
         }
         super.onCreate(savedInstanceState);
 
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (getSupportFragmentManager().findFragmentByTag(TAG) == null) {
             final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(android.R.id.content, new ImageGridFragment(), TAG);
             ft.commit();
+            
         }
       
+    }
+    public void onclicBtnBack(View v){
+		AppGlobal.getInstance().dispatcher.open(this, "main", true);
+	}
+    
+    public void onClickBtnClose(View v){
+    	Exit.buildAlertExit(this);
+    }
+   
+    public void onClickBtnOptions(View v){
+    	PreferencesController.getInstance().addPreferences("actualActivity", "category");
+		AppGlobal.getInstance().dispatcher.open(this, "options", true);
     }
 }

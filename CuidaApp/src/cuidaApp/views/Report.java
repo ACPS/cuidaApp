@@ -12,9 +12,10 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 
 import com.example.cuidaapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,14 +31,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.models.Activo;
-import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
 public class Report extends Activity implements LocationListener,
 		OnClickListener {
 
 	private GoogleMap mMap;
 	private LocationManager locationManager;
-	private Marker marker;
+	
 	
 	
 	
@@ -143,7 +143,7 @@ public class Report extends Activity implements LocationListener,
 
 				if(act!=null){
 					ManagerController.getInstance().setSelectedActivo(act);
-					AppGlobal.getInstance().dispatcher.open(Report.this, "confirm",false);
+					AppGlobal.getInstance().dispatcher.open(Report.this, "confirm",true);
 				}else{
 					Log.i("REPORT","null");
 				}
@@ -233,5 +233,15 @@ public class Report extends Activity implements LocationListener,
 		
 	}
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AppGlobal.getInstance().dispatcher.open(
+					Report.this,
+					"take", true);
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
+	
 }

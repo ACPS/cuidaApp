@@ -16,18 +16,55 @@
         android:scaleType="centerCrop"
         app:ignore="ContentDescription" />
 
-    <fragment
-        android:id="@+id/top_bar"
-        android:name="cuidaApp.views.TopBarFragmet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout="@layout/top_bar" />
+  <Button
+      android:id="@+id/top_bar_btn_back"
+      android:layout_width="42dp"
+      android:layout_height="42dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/bg_btn_top_bar_back"
+      android:onClick="onclicBtnBack"
+      android:shadowColor="#CCCCCC"
+      android:shadowDx="2"
+      android:shadowDy="2"
+      android:shadowRadius="2" />
+
+<Button
+    android:id="@+id/top_bar_btn_close"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_btn_top_bar_close"
+    android:onClick="onClickBtnClose"
+    android:shadowColor="#CCCCCC"
+    android:shadowDx="2"
+    android:shadowDy="2"
+    android:shadowRadius="2" />
+
+<Button
+    android:id="@+id/top_bar_btn_options"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_alignBaseline="@+id/top_bar_btn_close"
+    android:layout_alignBottom="@+id/top_bar_btn_close"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_toLeftOf="@+id/top_bar_btn_close"
+    android:background="@drawable/bg_btn_top_bar_options"
+    android:onClick="onClickBtnOptions"
+    android:shadowColor="#CCCCCC"
+    android:shadowDx="2"
+    android:shadowDy="2"
+    android:shadowRadius="2" />
 
     <cuidaApp.common.TypefaceTextView
         android:id="@+id/TypefaceTextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_bar"
+        android:layout_below="@id/top_bar_btn_back"
         android:layout_centerHorizontal="true"
         android:text="@string/activity_category_title"
         android:textColor="#FFDB00"
@@ -38,9 +75,9 @@
         android:id="@+id/help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/top_bar"
+        android:layout_below="@id/TypefaceTextView01"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:shadowDx="2"
         android:shadowDy="2"

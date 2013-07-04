@@ -9,6 +9,7 @@ import android.view.Window;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
+import cuidaApp.controllers.ManagerController;
 import cuidaApp.controllers.SendingController;
 
 public class Sending extends Activity{
@@ -22,6 +23,7 @@ public class Sending extends Activity{
 		setContentView(R.layout.activity_sending_report);
 		
 		if (!SendingController.getInstance().getsending()) {
+			ManagerController.getInstance().addImage();
 			SendingController.getInstance().createEntity();
 			SendingController.getInstance().sendData(this);
 		}

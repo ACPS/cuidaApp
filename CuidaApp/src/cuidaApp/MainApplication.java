@@ -4,10 +4,7 @@ import java.util.HashMap;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.nerdcore.logs.Trace;
-import com.nerdcore.utils.PhoneUtils;
-
+import cuidaApp.common.ListenerGPS;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
 
@@ -17,7 +14,7 @@ import cuidaApp.util.AppGlobal;
  */
 public class MainApplication extends Application {
 
-	private static final String TAG = "class MainApplication";
+	
 	private static Context context;
 
 	public HashMap<String, String> phone_data;
@@ -28,7 +25,8 @@ public class MainApplication extends Application {
 		MainApplication.context = getApplicationContext();
 
 		AppConfig.setProductionEnviroment();
-
+		ListenerGPS.getInstance().obtenerUbicacion(this);
+		
 		// // Get relevant data
 		//RenewToken.getInstance().sendRenewToken();// por definir
 		//phone_data = PhoneUtils.readPhoneData();

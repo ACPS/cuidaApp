@@ -192,8 +192,11 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             ActivityOptions options =
                     ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
             getActivity().startActivity(i, options.toBundle());
+            getActivity().finish();
         } else {
             startActivity(i);
+            getActivity().finish();
+            
         }
     }
 
