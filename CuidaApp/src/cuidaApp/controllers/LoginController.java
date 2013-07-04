@@ -38,7 +38,7 @@ public class LoginController {
 
 	
 
-	public boolean Login(String email, String password) {
+	public boolean Login(final String email, String password) {
 		boolean ok = false;
 
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -92,7 +92,8 @@ public class LoginController {
 									"token", token);
 							PreferencesController.getInstance().addPreferences(
 									"active", "true");
-							
+							PreferencesController.getInstance().addPreferences(
+									"email", email);
 							CommonGlobals.hideProgess();
 							AppGlobal.getInstance().dispatcher
 									.open((Activity) context,											

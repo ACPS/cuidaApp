@@ -87,14 +87,8 @@
             android:name="cuidaApp.views.Thanks"
             android:screenOrientation="portrait">
         </activity>
-         <activity
-            android:name="cuidaApp.views.Activos"
-            android:screenOrientation="portrait">
-        </activity>
-          <activity
-            android:name="cuidaApp.views.Detalle"
-            android:screenOrientation="portrait">
-        </activity>
+        
+         
         <activity
             android:name="cuidaApp.views.Registrar"
             android:screenOrientation="portrait">
@@ -131,6 +125,11 @@
             android:name="cuidaApp.views.Actives"
             android:screenOrientation="portrait">
         </activity>
+         <activity
+            android:name="cuidaApp.views.DetailActive"
+            android:screenOrientation="portrait">
+        </activity>
+         
     </application>
 
 </manifest>

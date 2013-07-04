@@ -34,6 +34,8 @@ public class AppGlobal {
 				"cuidaApp.views.SendReport");
 		dispatcher.addHandler("activos",
 				"cuidaApp.views.Actives");
+		dispatcher.addHandler("detail",
+				"cuidaApp.views.DetailActive");
 		dispatcher.addHandler("confirm",
 				"cuidaApp.views.Confirm");
 		dispatcher.addHandler("report",

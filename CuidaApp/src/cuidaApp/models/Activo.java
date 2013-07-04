@@ -7,6 +7,8 @@ public class Activo {
 	private double lat;
 	private String adress;
 	private String estado;
+	private int posicion_icon;
+	private String name_category;
 	
 	public Activo(int id, double lon, double lat, String adress, String estado) {
 		super();
@@ -16,12 +18,24 @@ public class Activo {
 		this.adress=adress;
 		this.estado=estado;
 	}
+	
+	public Activo(int id, double lon, double lat, String adress, String estado, int posicion, String name) {
+		super();
+		this.id = id;
+		this.lon = lon;
+		this.lat = lat;
+		this.adress=adress;
+		this.estado=estado;
+		this.posicion_icon=posicion;
+		this.name_category=name;
+	}
 	public Activo() {
 		super();
 		this.id=0;
 		this.lon=0;
 		this.lat=0;
-		
+		this.adress="";
+		this.estado="";
 	}
 	public int getId() {
 		return id;
@@ -54,9 +68,21 @@ public class Activo {
 		this.estado = estado;
 	}
 	
+	public int getPosicion_icon() {
+		return posicion_icon;
+	}
 	
+	public void setPosicion_icon(int posicion_icon) {
+		this.posicion_icon = posicion_icon;
+	}
 	
+	public String getName_category() {
+		return name_category;
+	}
 	
+	public void setName_category(String name_category) {
+		this.name_category = name_category;
+	}
 	
 	
 }

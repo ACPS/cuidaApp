@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import cuidaApp.controllers.ConfirmController;
+import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.models.Activo;
 import cuidaApp.util.AppGlobal;
@@ -63,44 +64,58 @@ public class Actives extends Activity implements LocationListener,
 				LocationManager.NETWORK_PROVIDER, 0, 0, this);
 
 	
-//		addMarkers();
+		addMarkers();
 
 	}
 
 	private void addMarkers() {
 		
 		LatLng latlon = null;
-		for (Activo act : ConfirmController.getInstance().getActivos()) {
+//		for (Activo act : ConfirmController.getInstance().getActivos()) {
+//			latlon = new LatLng(act.getLat(), act.getLon());
+//			Bitmap icon = ManagerController.getInstance().getSelectedCategory()
+//					.getNormal();
+//
+//			if (act.getEstado().equalsIgnoreCase("normal")) {
+//				icon = ManagerController.getInstance().getSelectedCategory()
+//						.getNormal();
+//			}
+//			if (act.getEstado().equalsIgnoreCase("reported")) {
+//				icon = ManagerController.getInstance().getSelectedCategory()
+//						.getReported();
+//			}
+//			if (act.getEstado().equalsIgnoreCase("attended")) {
+//				icon = ManagerController.getInstance().getSelectedCategory()
+//						.getAttended();
+//			}
+//			if (act.getEstado().equalsIgnoreCase("repaired")) {
+//				icon = ManagerController.getInstance().getSelectedCategory()
+//						.getRepaired();
+//			}
+//
+//			if (icon != null) {
+//				mMap.addMarker(new MarkerOptions().position(latlon).icon(
+//						BitmapDescriptorFactory.fromBitmap(icon)));
+//			} else {
+//				mMap.addMarker(new MarkerOptions().position(latlon));
+//			}
+//
+//		}
+
+		List<Activo> actives = MainController.getInstance().getActivos();
+		for(Activo act :actives){
 			latlon = new LatLng(act.getLat(), act.getLon());
-			Bitmap icon = ManagerController.getInstance().getSelectedCategory()
-					.getNormal();
-
-			if (act.getEstado().equalsIgnoreCase("normal")) {
-				icon = ManagerController.getInstance().getSelectedCategory()
-						.getNormal();
-			}
-			if (act.getEstado().equalsIgnoreCase("reported")) {
-				icon = ManagerController.getInstance().getSelectedCategory()
-						.getReported();
-			}
-			if (act.getEstado().equalsIgnoreCase("attended")) {
-				icon = ManagerController.getInstance().getSelectedCategory()
-						.getAttended();
-			}
-			if (act.getEstado().equalsIgnoreCase("repaired")) {
-				icon = ManagerController.getInstance().getSelectedCategory()
-						.getRepaired();
-			}
-
-			if (icon != null) {
-				mMap.addMarker(new MarkerOptions().position(latlon).icon(
-						BitmapDescriptorFactory.fromBitmap(icon)));
-			} else {
+			if(act.getPosicion_icon()!=-1){
+				if(MainController.getInstance().getIcons().get(act.getPosicion_icon()).getImage()!=null){
+					mMap.addMarker(new MarkerOptions().position(latlon).icon(
+							BitmapDescriptorFactory.fromBitmap(MainController.getInstance().getIcons().get(act.getPosicion_icon()).getImage())));
+				}else{
+					mMap.addMarker(new MarkerOptions().position(latlon));
+				}
+			}else{
 				mMap.addMarker(new MarkerOptions().position(latlon));
 			}
-
 		}
-
 		mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
 			@Override
@@ -112,7 +127,7 @@ public class Actives extends Activity implements LocationListener,
 				if (act != null) {
 					ManagerController.getInstance().setSelectedActivo(act);
 					AppGlobal.getInstance().dispatcher.open(Actives.this,
-							"confirm", true);
+							"detail", true);
 				} else {
 					Log.i("REPORT", "null");
 				}

@@ -4,7 +4,6 @@ package cuidaApp.views;
 
 
 import android.Manifest.permission;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.bitmapfun.provider.Images;
 import android.content.Context;
@@ -19,7 +18,6 @@ import android.view.View;
 import android.view.Window;
 
 import com.example.cuidaapp.R;
-import com.nerdcore.logs.Trace;
 import com.nerdcore.utils.CheckPermissionsUtils;
 
 import cuidaApp.common.ListenerGPS;
@@ -29,7 +27,7 @@ import cuidaApp.util.AppGlobal;
 
 public class MainActivity extends FragmentActivity {
 
-	private MainController controller=new MainController();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,7 +52,7 @@ public class MainActivity extends FragmentActivity {
 			if(getGPSStatus()){
 				if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
 					ListenerGPS.getInstance().stopListener();
-					controller.loadCategory(this);
+					MainController.getInstance().loadCategory(this);
 				}else{
 					ubicationNoFound();
 				}
@@ -117,8 +115,8 @@ public class MainActivity extends FragmentActivity {
 	
 	private void ubicationNoFound(){
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(R.string.dialog_no_gps_content)
-				.setTitle(R.string.dialog_no_gps_title)
+		builder.setMessage(R.string.dialog_no_found_location_gps)
+				.setTitle(R.string.dialog_exit_title)
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setCancelable(false)
 				.setPositiveButton(R.string.dialog_no_gps_acept,
@@ -126,7 +124,7 @@ public class MainActivity extends FragmentActivity {
 							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
-								startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+								dialog.dismiss();
 							}
 						});
 		final AlertDialog alert = builder.create();

@@ -20,6 +20,8 @@ public class AppConfig {
 	private static final String RANKING = "reputation";
 	private static final String CATEGORIES="category/findCategoriesByCoordinates/";
 	private static final String ACTIVES="category/findAssetsByCategory";
+	private static final String MYACTIVES="assets/findAssetsByUser";
+	
 	
 	public static final String APP_KEY_BUGS = "e1c65b3eecab64d612dcddfddd0a56c03e6e1c2a";
 
@@ -77,6 +79,7 @@ public class AppConfig {
 	public static String RANKING_URL;
 	public static String CATEGORIES_URL;
 	public static String ACTIVES_URL;
+	public static String MYACTIVES_URL;
 
 	// Developer pusher
 	public static String PUSHER_KEY;
@@ -100,7 +103,8 @@ public class AppConfig {
 		UPDATE_TOKEN_URL = DEV_USERS_API_URL + UPDATE_TOKEN;
 		RANKING_URL = DEV_USERS_API_URL + RANKING;
 		CATEGORIES_URL=DEV_USERS_CATEGOTY_URL+CATEGORIES;
-		ACTIVES_URL=DEV_USERS_CATEGOTY_URL+CATEGORIES;
+		ACTIVES_URL=DEV_USERS_CATEGOTY_URL+ACTIVES;
+		MYACTIVES_URL=DEV_USERS_CATEGOTY_URL+MYACTIVES;
 	}
 
 	public static void setProductionEnviroment() {
@@ -122,5 +126,6 @@ public class AppConfig {
 		RANKING_URL = PRO_USERS_API_URL + RANKING;
 		CATEGORIES_URL=PRO_USERS_CATEGOTY_URL+CATEGORIES;
 		ACTIVES_URL=PRO_USERS_CATEGOTY_URL+ACTIVES;
+		MYACTIVES_URL=PRO_USERS_CATEGOTY_URL+MYACTIVES;
 	}
 }
