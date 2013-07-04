@@ -165,7 +165,7 @@ public class MainController {
 								activos.add(activo_object);
 							}
 //							Images.init();
-					        AppGlobal.getInstance().dispatcher.open((Activity) context, "report", true);
+					        AppGlobal.getInstance().dispatcher.open((Activity) context, "activos", true);
 					        
 						} else {
 							

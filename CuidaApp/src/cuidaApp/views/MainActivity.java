@@ -67,7 +67,8 @@ public class MainActivity extends FragmentActivity {
 	}
 	public void BtnActivos(View v){
 //		Images.init();
-        AppGlobal.getInstance().dispatcher.open(this, "activos", true);
+		MainController.getInstance().loadMyActives(this);
+//        AppGlobal.getInstance().dispatcher.open(this, "activos", true);
 	}
 	
 	public boolean getGPSStatus() {
