@@ -18,6 +18,7 @@ package cuidaApp.views;
 
 
 import android.bitmapfun.util.Utils;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -65,5 +66,9 @@ public class ImageGridActivity extends FragmentActivity {
     public void onClickBtnOptions(View v){
     	PreferencesController.getInstance().addPreferences("actualActivity", "category");
 		AppGlobal.getInstance().dispatcher.open(this, "options", true);
+    }
+    
+    public  Context MyContext(){
+    	return this;
     }
 }

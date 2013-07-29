@@ -26,7 +26,7 @@ public class Confirm extends FragmentActivity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_confirm);
 		TopBar.initializeTopBar(this, View.VISIBLE, View.VISIBLE, View.VISIBLE,
-				"report", "take");
+				"take", "take");
 		ImageView preview = (ImageView) findViewById(R.id.image_preview1);
 		preview.setImageBitmap(ManagerController.getInstance().getImageTemp());
 		

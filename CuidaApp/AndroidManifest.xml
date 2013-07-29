@@ -135,6 +135,15 @@
             android:screenOrientation="portrait">
         </activity>
          
+        <activity
+            android:name="cuidaApp.views.FirstHelp"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="cuidaApp.views.ActvieGPS"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

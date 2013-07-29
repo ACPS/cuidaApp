@@ -48,6 +48,7 @@ import android.widget.Toast;
 import com.example.cuidaapp.BuildConfig;
 import com.example.cuidaapp.R;
 
+import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.InternetCacheController;
 import cuidaApp.controllers.ManagerController;
 
@@ -179,25 +180,30 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
     @TargetApi(16)
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        final Intent i = new Intent(getActivity(), PhotoCapture.class);
-//        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
-        Categoria Cat =(Categoria)parent.getItemAtPosition(position);
-        Cat.DownloadIcon();
-        ManagerController.getInstance().setSelectedCategory(Cat);
-        Log.i("ImageGridFragment",Cat.getName());
-        if (Utils.hasJellyBean()) {
-            // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may
-            // show plus the thumbnail image in GridView is cropped. so using
-            // makeScaleUpAnimation() instead.
-            ActivityOptions options =
-                    ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
-            getActivity().startActivity(i, options.toBundle());
-            getActivity().finish();
-        } else {
-            startActivity(i);
-            getActivity().finish();
-            
-        }
+    	Log.i("",getActivity().getApplicationContext()+"");
+    	Categoria Cat =(Categoria)parent.getItemAtPosition(position);
+    	Cat.DownloadIcon();
+    	ManagerController.getInstance().setSelectedCategory(Cat);
+    	ConfirmController.getInstance().loadActives(getActivity());
+//        final Intent i = new Intent(getActivity(), Actives.class);
+////        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
+//        Categoria Cat =(Categoria)parent.getItemAtPosition(position);
+//        Cat.DownloadIcon();
+//        ManagerController.getInstance().setSelectedCategory(Cat);
+//        Log.i("ImageGridFragment",Cat.getName());
+//        if (Utils.hasJellyBean()) {
+//            // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may
+//            // show plus the thumbnail image in GridView is cropped. so using
+//            // makeScaleUpAnimation() instead.
+//            ActivityOptions options =
+//                    ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
+//            getActivity().startActivity(i, options.toBundle());
+//            getActivity().finish();
+//        } else {
+//            startActivity(i);
+//            getActivity().finish();
+//            
+//        }
     }
 
   

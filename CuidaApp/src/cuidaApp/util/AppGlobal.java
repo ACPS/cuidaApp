@@ -28,10 +28,14 @@ public class AppGlobal {
 
 		dispatcher.addHandler("login",
 				"cuidaApp.views.Login");
+		dispatcher.addHandler("help",
+				"cuidaApp.views.FirstHelp");
+		dispatcher.addHandler("gps",
+				"cuidaApp.views.ActiveGPS");
 		dispatcher.addHandler("main",
 				"cuidaApp.views.MainActivity");
 		dispatcher.addHandler("take",
-				"cuidaApp.views.PhotoCapture");
+				"cuidaApp.views.SendReport");
 		dispatcher.addHandler("activos",
 				"cuidaApp.views.Actives");
 		dispatcher.addHandler("detail",

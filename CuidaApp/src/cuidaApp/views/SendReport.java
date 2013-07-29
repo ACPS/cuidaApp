@@ -61,7 +61,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		
 		
 		TopBar.initializeTopBar(this, View.VISIBLE, View.VISIBLE, View.VISIBLE,
-				"category", "take");
+				"report", "take");
 		
 		// Create our Preview view and set it as the content of our activity.
 		mPreview = new SurfaceController(this);
@@ -105,12 +105,13 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		handler.postDelayed(showOptions(), 1000);
 		
 		// btn_take_a_pic.setVisibility(View.GONE);
+		Log.i("SendReport",ManagerController.getInstance().getImageTemp()+"");
 	}
 	
 	
 	public void BtnDoneClic(View v){
 		
-		ConfirmController.getInstance().loadActives(this);
+		AppGlobal.getInstance().dispatcher.open(this, "confirm", true);
 		
 	}
 	
@@ -147,6 +148,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		btn_cancel.setVisibility(option);
 		btn_done.setVisibility(option);
 		container_image_preview.setVisibility(option);
+		Log.i("show","aaaa");
 	}
 	
 	public void Confirm(View v){
@@ -211,7 +213,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 			AppGlobal.getInstance().dispatcher.open(
-						SendReport.this,"category", true);
+						SendReport.this,"report", true);
 		}
 		return super.onKeyDown(keyCode, event);
 	}

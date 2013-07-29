@@ -2,8 +2,10 @@ package cuidaApp.views;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Window;
 
 import com.example.cuidaapp.R;
@@ -32,25 +34,48 @@ public class Splashscreen extends Activity{
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-				finish();
+				
 				if (!mIsBackButtonPressed) {
 					if(PreferencesController.getInstance().isPrefences("active")){
-						AppGlobal.getInstance().dispatcher.open(Splashscreen.this, "main",true);
+						if(!PreferencesController.getInstance().isPrefences("first")){
+							Intent intent = new Intent(Splashscreen.this, FirstHelp.class);
+					        startActivity(intent);
+					    	finish();
+						}else{
+							Intent intent = new Intent(Splashscreen.this, ActvieGPS.class);
+					        startActivity(intent);
+					    	finish();
+						}
 					}else{
-						AppGlobal.getInstance().dispatcher.open(Splashscreen.this, send(),true);
+						
+						send();
 					}
 				}
 			}
 		};		return runnable;
 	}
 	
-	public String send(){
-		
-		//	Trace.i(TAG, PreferencesController.getInstance().getPreferences("token"));
+	public void send(){
+			//	Trace.i(TAG, PreferencesController.getInstance().getPreferences("token"));
 			if((PreferencesController.getInstance().isPrefences("token"))&&(!PreferencesController.getInstance().isPrefences("active"))){
-				return "emailconfirmation";
+				
+				Intent intent = new Intent(Splashscreen.this, EmailConfirmation.class);
+		        startActivity(intent);
+		    	finish();
 			}else{
-				return "login";
+				if(!PreferencesController.getInstance().isPrefences("first")){
+				
+					Intent intent = new Intent(Splashscreen.this, FirstHelp.class);
+			        startActivity(intent);
+			    	finish();
+				}else{
+				
+					Intent intent = new Intent(Splashscreen.this, ActvieGPS.class);
+					startActivity(intent);
+					finish();
+			    	
+				}
+				
 			}
 			
 	}

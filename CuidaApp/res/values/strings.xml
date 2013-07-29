@@ -61,4 +61,8 @@
     <string name="tittle_detail_active">Detalles Activo</string>
     <string name="btn_delete_active">Eliminar activo</string>
     <string name="btn_back">Regresar</string>
+    
+    <string name="info_gps">Para ver los\nbienes disponibles\nen tu ciudad,\n activa tu GPS.</string>
+    
+    <string name="btn_on_gps">Encender GPS.</string>
 </resources>

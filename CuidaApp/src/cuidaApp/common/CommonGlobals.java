@@ -6,16 +6,19 @@ package cuidaApp.common;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.Manifest.permission;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.LocationManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.cuidaapp.R;
+import com.nerdcore.utils.CheckPermissionsUtils;
 
 /**
  * @author LUSTER
@@ -98,6 +101,23 @@ public class CommonGlobals {
 							});
 			final AlertDialog alert = builder.create();
 			alert.show();
+		}
+	 
+	  public static boolean getGPSStatus(Context context) {
+
+			if (CheckPermissionsUtils.is(permission.ACCESS_FINE_LOCATION)) {
+
+				LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+				if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+					return false;
+				} else {
+					return true;
+				}
+
+			} else {
+				return false;
+			}
 		}
 
 }

@@ -95,9 +95,16 @@ public class LoginController {
 							PreferencesController.getInstance().addPreferences(
 									"email", email);
 							CommonGlobals.hideProgess();
-							AppGlobal.getInstance().dispatcher
-									.open((Activity) context,											
-											"main", true);
+							if(ManagerController.getInstance().getSelectedActivo()!=null){
+								AppGlobal.getInstance().dispatcher
+								.open((Activity) context,											
+										"take", true);
+							}else{
+								AppGlobal.getInstance().dispatcher
+								.open((Activity) context,											
+										"gps", true);
+							}
+							
 						} else {
 							// AppGlobal.getInstance().dispatcher.open((Activity)context,
 							// SplashscreenController.getInstance().sendActivity(),

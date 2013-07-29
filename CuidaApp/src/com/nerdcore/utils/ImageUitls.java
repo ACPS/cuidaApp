@@ -12,11 +12,22 @@ import android.util.Log;
 
 public class ImageUitls {
 	public static String saveOnDisk(Bitmap imagen) {
+		
 		String the_path = Environment.getExternalStorageDirectory()
-				+ File.separator + "prohibidoparquear";
+				+ File.separator + "cuidaApp";
 		String uid = UUID.randomUUID().toString();
 		String the_file = the_path + File.separator + uid + ".png";
+
 		OutputStream fout = null;
+		
+		boolean success = (new File(the_path)).mkdir(); 
+        if (!success) {
+            Log.i("directory not created", "directory not created");
+        } else {
+            Log.i("directory created", "directory created");
+        }
+        
+      
 		try {
 			Log.v("Path", the_file);
 			fout = new FileOutputStream(the_file);

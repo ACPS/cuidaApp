@@ -39,7 +39,7 @@ public class Actives extends Activity implements LocationListener,
 
 	private GoogleMap mMap;
 	private LocationManager locationManager;
-
+	private Marker marker;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,36 +71,6 @@ public class Actives extends Activity implements LocationListener,
 	private void addMarkers() {
 		
 		LatLng latlon = null;
-//		for (Activo act : ConfirmController.getInstance().getActivos()) {
-//			latlon = new LatLng(act.getLat(), act.getLon());
-//			Bitmap icon = ManagerController.getInstance().getSelectedCategory()
-//					.getNormal();
-//
-//			if (act.getEstado().equalsIgnoreCase("normal")) {
-//				icon = ManagerController.getInstance().getSelectedCategory()
-//						.getNormal();
-//			}
-//			if (act.getEstado().equalsIgnoreCase("reported")) {
-//				icon = ManagerController.getInstance().getSelectedCategory()
-//						.getReported();
-//			}
-//			if (act.getEstado().equalsIgnoreCase("attended")) {
-//				icon = ManagerController.getInstance().getSelectedCategory()
-//						.getAttended();
-//			}
-//			if (act.getEstado().equalsIgnoreCase("repaired")) {
-//				icon = ManagerController.getInstance().getSelectedCategory()
-//						.getRepaired();
-//			}
-//
-//			if (icon != null) {
-//				mMap.addMarker(new MarkerOptions().position(latlon).icon(
-//						BitmapDescriptorFactory.fromBitmap(icon)));
-//			} else {
-//				mMap.addMarker(new MarkerOptions().position(latlon));
-//			}
-//
-//		}
 
 		List<Activo> actives = MainController.getInstance().getActivos();
 		for(Activo act :actives){
@@ -170,33 +140,33 @@ public class Actives extends Activity implements LocationListener,
 
 	@Override
 	public void onLocationChanged(Location location) {
-		// LatLng latlon = new LatLng(location.getLatitude(),
-		// location.getLongitude());
+		 LatLng latlon = new LatLng(location.getLatitude(),
+		 location.getLongitude());
 
-		// if (marker == null) {
-		//
-		//
-		// marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-		// "Posici—n actual"));
-		//
-		// marker.setDraggable(true);
-		//
-		//
-		// } else {
-		// marker.setPosition(latlon);
-		// }
-		// mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16),
-		// 200,
-		// new CancelableCallback() {
-		//
-		// @Override
-		// public void onFinish() {
-		// }
-		//
-		// @Override
-		// public void onCancel() {
-		// }
-		// });
+		if (marker == null) {
+		
+		
+		 marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
+		 "Posici—n actual"));
+		
+		 
+		
+		
+		} else {
+		 marker.setPosition(latlon);
+		}
+		 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16),
+		 200,
+		 new CancelableCallback() {
+		
+		 @Override
+		 public void onFinish() {
+		 }
+		
+		 @Override
+		 public void onCancel() {
+		 }
+		 });
 	}
 
 	@Override

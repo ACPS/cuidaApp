@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
+import cuidaApp.controllers.PreferencesController;
 import cuidaApp.models.Activo;
 import cuidaApp.util.AppGlobal;
 public class Report extends Activity implements LocationListener,
@@ -39,7 +40,7 @@ public class Report extends Activity implements LocationListener,
 	private GoogleMap mMap;
 	private LocationManager locationManager;
 	
-	
+	private Marker marker;
 	
 	
 	@SuppressLint("NewApi")
@@ -146,7 +147,11 @@ public class Report extends Activity implements LocationListener,
 
 				if(act!=null){
 					ManagerController.getInstance().setSelectedActivo(act);
-					AppGlobal.getInstance().dispatcher.open(Report.this, "confirm",true);
+					if(PreferencesController.getInstance().isPrefences("active")){
+					   AppGlobal.getInstance().dispatcher.open(Report.this, "take",true);
+					}else{
+						AppGlobal.getInstance().dispatcher.open(Report.this, "login",true);
+					}
 				}else{
 					Log.i("REPORT","null");
 				}
@@ -190,32 +195,32 @@ public class Report extends Activity implements LocationListener,
 
 	@Override
 	public void onLocationChanged(Location location) {
-//		LatLng latlon = new LatLng(location.getLatitude(),
-//				location.getLongitude());
+		LatLng latlon = new LatLng(location.getLatitude(),
+				location.getLongitude());
 		
-//		if (marker == null) {
-//			
-//			
-//			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-//					"Posici—n actual"));
-//			
-//			marker.setDraggable(true);
-//			
-//		
-//		} else {
-//			marker.setPosition(latlon);
-//		}
-//		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
-//				new CancelableCallback() {
-//
-//					@Override
-//					public void onFinish() {
-//					}
-//
-//					@Override
-//					public void onCancel() {
-//					}
-//				});
+		if (marker == null) {
+			
+			
+			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
+					"Posici—n actual"));
+			
+			marker.setDraggable(true);
+			
+		
+		} else {
+			marker.setPosition(latlon);
+		}
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
+				new CancelableCallback() {
+
+					@Override
+					public void onFinish() {
+					}
+
+					@Override
+					public void onCancel() {
+					}
+				});
 	}
 
 	@Override
@@ -241,7 +246,7 @@ public class Report extends Activity implements LocationListener,
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 			AppGlobal.getInstance().dispatcher.open(
 					Report.this,
-					"take", true);
+					"caegory", true);
 		}
 		return super.onKeyDown(keyCode, event);
 	}
