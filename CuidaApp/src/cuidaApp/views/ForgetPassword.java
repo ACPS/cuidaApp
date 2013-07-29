@@ -24,7 +24,7 @@ public class ForgetPassword extends FragmentActivity {
 
 	//private Requirements requirements;
 	private ForgetPasswordController controller;
-	private final String TAG = "Activity ForgetPassword";
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

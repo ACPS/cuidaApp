@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.cuidaapp.R;
@@ -33,8 +32,7 @@ public class ChangePassword extends FragmentActivity {
 	private boolean codethree=false;
 	private boolean codefour=false;
 	private ChangePasswordController controler;
-	private final String TAG = "Activity ChangePassword";
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		

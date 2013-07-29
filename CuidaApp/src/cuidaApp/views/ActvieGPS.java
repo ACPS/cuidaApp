@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -15,7 +14,6 @@ import com.example.cuidaapp.R;
 import cuidaApp.common.CommonGlobals;
 import cuidaApp.common.ListenerGPS;
 import cuidaApp.controllers.MainController;
-import cuidaApp.controllers.PreferencesController;
 import cuidaApp.util.AppGlobal;
 
 public class ActvieGPS extends Activity{

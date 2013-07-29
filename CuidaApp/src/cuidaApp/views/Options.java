@@ -32,7 +32,7 @@ public class Options extends FragmentActivity{
 
 
 	private OptionsController controller;
-	private final String TAG = "Activity Options";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

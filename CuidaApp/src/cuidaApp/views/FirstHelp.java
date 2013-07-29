@@ -3,15 +3,11 @@ package cuidaApp.views;
 
 
 
-import android.Manifest.permission;
 import android.app.AlertDialog;
 import android.bitmapfun.provider.Images;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -26,7 +22,6 @@ import android.view.Window;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.cuidaapp.R;
-import com.nerdcore.utils.CheckPermissionsUtils;
 
 import cuidaApp.common.CommonGlobals;
 import cuidaApp.common.ListenerGPS;
@@ -38,9 +33,8 @@ import cuidaApp.util.AppGlobal;
 public class FirstHelp extends  SherlockFragmentActivity  {
 	static final int NUM_ITEMS = 3;
  
-	static int next=1;
-    static int back=0;
-    private int actual=0;
+	
+    
  
     ViewPager mPager;    
     MyAdapter mAdapter;
@@ -75,8 +69,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
         	  @Override
         	  public void onPageSelected(int index) {
         	    Log.i("e", "onPageSelected " + index);
-        	    next=index+1;
-        	    back=index-1;
+        	   
         	  }
 
 			@Override

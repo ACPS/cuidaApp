@@ -19,15 +19,11 @@ package cuidaApp.views;
 
 
 import android.annotation.TargetApi;
-import android.app.ActivityOptions;
 import android.bitmapfun.provider.Categoria;
 import android.bitmapfun.provider.Images;
 import android.bitmapfun.ui.RecyclingImageView;
 import android.bitmapfun.util.ImageCache.ImageCacheParams;
-import android.bitmapfun.util.ImageFetcher;
-import android.bitmapfun.util.Utils;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;

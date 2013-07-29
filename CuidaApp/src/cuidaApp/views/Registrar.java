@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.cuidaapp.R;
@@ -16,14 +15,14 @@ import cuidaApp.controllers.RegisterController;
 public class Registrar extends FragmentActivity{
 
 	// private Requirements requirements;
-		private Button btn_send_dats ;
+		
 		private EditText name;
 		private EditText last_name;
 		private EditText email;
 		private EditText password ;
 		private EditText repeatpassord;
 		private RegisterController controller;
-		private final String TAG = "Activity Register";
+		
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class Registrar extends FragmentActivity{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_register);
 		
-		btn_send_dats = (Button) findViewById(R.id.btn_update);
+		
 		name = (EditText) findViewById(R.id.txt_name);
 		last_name= (EditText) findViewById(R.id.txt_lastname);
 		email = (EditText) findViewById(R.id.txt_passactual);

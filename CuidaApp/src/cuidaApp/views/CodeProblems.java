@@ -15,7 +15,7 @@ public class CodeProblems extends FragmentActivity {
 
 	private EditText emailView;
 	private CodeProblemsController controller;
-	private final String TAG = "Activity CodeProblems";
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

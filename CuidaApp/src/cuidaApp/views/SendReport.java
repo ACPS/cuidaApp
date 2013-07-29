@@ -24,11 +24,8 @@ import com.example.cuidaapp.R;
 import com.nerdcore.logs.Trace;
 
 import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
 import cuidaApp.common.TopBar;
-import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
-import cuidaApp.controllers.PreferencesController;
 import cuidaApp.controllers.SurfaceController;
 import cuidaApp.util.AppGlobal;
 

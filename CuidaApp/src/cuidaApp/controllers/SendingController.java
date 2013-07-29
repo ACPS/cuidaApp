@@ -36,7 +36,6 @@ import android.util.Log;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
 

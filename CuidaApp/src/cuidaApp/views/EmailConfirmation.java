@@ -29,7 +29,7 @@ public class EmailConfirmation extends FragmentActivity {
 	private boolean codetwo=false;
 	private boolean codethree=false;
 	private boolean codefour=false;
-	private final String TAG = "Activity EmailConfirmation";
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
