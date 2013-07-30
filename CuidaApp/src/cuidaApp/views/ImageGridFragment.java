@@ -37,6 +37,7 @@ import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ import com.example.cuidaapp.R;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.InternetCacheController;
 import cuidaApp.controllers.ManagerController;
+import cuidaApp.controllers.PreferencesController;
 
 
 
@@ -97,6 +99,8 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
     	
 		InternetCacheController.getInstance(getActivity(), mImageThumbSize,
 				getActivity().getSupportFragmentManager(), cacheParams);
+		
+		
         
     }
 
@@ -105,6 +109,10 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View v = inflater.inflate(R.layout.activity_category, container, false);
+        Button btn_options = (Button)v.findViewById(R.id.top_bar_btn_options);
+        if(!PreferencesController.getInstance().isPrefences("active")){
+        	btn_options.setVisibility(View.GONE);
+        }
         final GridView mGridView = (GridView) v.findViewById(R.id.gridview);
         mGridView.setAdapter(mAdapter);
         mGridView.setOnItemClickListener(this);

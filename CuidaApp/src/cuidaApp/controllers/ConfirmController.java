@@ -93,7 +93,7 @@ public class ConfirmController {
 					        
 						} else {
 							
-							CommonGlobals.show_alert(context, context.getString(R.string.error_global));
+							CommonGlobals.show_alert(context, context.getString(R.string.error_no_assets));
 							CommonGlobals.hideProgess();
 							Log.i("ConfirmController", "errorservice");
 							

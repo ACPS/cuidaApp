@@ -8,6 +8,7 @@
      <string name="error_title">¡Hubo un inconveniente!</string>
     <string name="error_acept">¡De acuerdo!</string>
     <string name="error_global">Por favor inténtelo nuevamente más tarde.</string>
+    <string name="error_no_assets">No existen activos de ésta categoría, cerca de ti</string>
      <string name="information_title">Información</string>
      <string name="wait_message">Espere un momento por favor...</string>
      <string name="error_invalid_email">Su dirección de correo electrónico ingresado no cumple con un formato valido</string>

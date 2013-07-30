@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.OptionsController;
 import cuidaApp.controllers.PreferencesController;
 import cuidaApp.util.AppGlobal;
@@ -88,10 +89,6 @@ public class Options extends FragmentActivity{
 
 		controller.showUser(txt_user_name, txt_user_last_name, this);
 
-
-		
-		
-		
 	}
 
 	@Override
@@ -126,4 +123,9 @@ public class Options extends FragmentActivity{
 	}
 	
 	
+	public void BtnActivos(View v){
+//		Images.init();
+		MainController.getInstance().loadMyActives(this);
+//        AppGlobal.getInstance().dispatcher.open(this, "activos", true);
+	}
 }

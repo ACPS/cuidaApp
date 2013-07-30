@@ -2,14 +2,17 @@ package cuidaApp;
 
 import java.util.HashMap;
 
+
+
 import android.app.Application;
 import android.content.Context;
 import cuidaApp.common.ListenerGPS;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
 
 /**
- * @author Jorge
+ * @author ACPS
  * 
  */
 public class MainApplication extends Application {
@@ -26,6 +29,7 @@ public class MainApplication extends Application {
 
 		AppConfig.setProductionEnviroment();
 		ListenerGPS.getInstance().obtenerUbicacion(this);
+		CacheMemoryController.getInstance(getResources());
 		
 		// // Get relevant data
 		//RenewToken.getInstance().sendRenewToken();// por definir

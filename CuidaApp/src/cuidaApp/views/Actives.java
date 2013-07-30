@@ -32,18 +32,19 @@ import cuidaApp.controllers.ManagerController;
 import cuidaApp.models.Activo;
 import cuidaApp.util.AppGlobal;
 
-public class Actives extends Activity implements LocationListener,
+public class Actives extends Activity implements 
 		OnClickListener {
 
 	private GoogleMap mMap;
-	private LocationManager locationManager;
-	private Marker marker;
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
 		setContentView(R.layout.activity_actives);
 
 	
@@ -53,13 +54,6 @@ public class Actives extends Activity implements LocationListener,
 
 
 
-
-		locationManager = (LocationManager) this
-				.getSystemService(Context.LOCATION_SERVICE);
-
-
-		locationManager.requestLocationUpdates(
-				LocationManager.NETWORK_PROVIDER, 0, 0, this);
 
 	
 		addMarkers();
@@ -136,61 +130,21 @@ public class Actives extends Activity implements LocationListener,
 		return null;
 	}
 
-	@Override
-	public void onLocationChanged(Location location) {
-		 LatLng latlon = new LatLng(location.getLatitude(),
-		 location.getLongitude());
+	
 
-		if (marker == null) {
-		
-		
-		 marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-		 "Posici—n actual"));
-		
-		 
-		
-		
-		} else {
-		 marker.setPosition(latlon);
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AppGlobal.getInstance().dispatcher.open(Actives.this, "options", true);
 		}
-		 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16),
-		 200,
-		 new CancelableCallback() {
-		
-		 @Override
-		 public void onFinish() {
-		 }
-		
-		 @Override
-		 public void onCancel() {
-		 }
-		 });
-	}
-
-	@Override
-	public void onProviderDisabled(String provider) {
-	}
-
-	@Override
-	public void onProviderEnabled(String provider) {
-	}
-
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
+		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-			AppGlobal.getInstance().dispatcher.open(Actives.this, "main", true);
-		}
-		return super.onKeyDown(keyCode, event);
+		
 	}
 
 }

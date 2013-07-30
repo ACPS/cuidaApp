@@ -24,8 +24,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.example.cuidaapp.BuildConfig;
+import com.example.cuidaapp.R;
 
 import cuidaApp.common.Exit;
 import cuidaApp.controllers.PreferencesController;
@@ -53,6 +55,7 @@ public class ImageGridActivity extends FragmentActivity {
             ft.commit();
             
         }
+       
       
     }
     public void onclicBtnBack(View v){

@@ -3,9 +3,12 @@ package cuidaApp.views;
 import java.text.DecimalFormat;
 import java.util.List;
 
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
@@ -16,7 +19,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.RelativeLayout;
+import android.widget.Button;
 
 import com.example.cuidaapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,6 +32,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
+import cuidaApp.common.Exit;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.controllers.PreferencesController;
@@ -56,7 +61,10 @@ public class Report extends Activity implements LocationListener,
 
 		
 		// === Map
-		
+		Button btn_options= (Button)findViewById(R.id.top_bar_btn_options);
+		if(!PreferencesController.getInstance().isPrefences("active")){
+			btn_options.setVisibility(View.INVISIBLE);
+		}
 	
 
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(
@@ -72,7 +80,7 @@ public class Report extends Activity implements LocationListener,
 		// Register the listener with the Location Manager to receive location
 		// updates
 		locationManager.requestLocationUpdates(
-				LocationManager.NETWORK_PROVIDER, 0, 0, this);
+				LocationManager.GPS_PROVIDER, 0, 0, this);
 
 		
 
@@ -150,7 +158,7 @@ public class Report extends Activity implements LocationListener,
 					if(PreferencesController.getInstance().isPrefences("active")){
 					   AppGlobal.getInstance().dispatcher.open(Report.this, "take",true);
 					}else{
-						AppGlobal.getInstance().dispatcher.open(Report.this, "login",true);
+						startSession();
 					}
 				}else{
 					Log.i("REPORT","null");
@@ -197,7 +205,7 @@ public class Report extends Activity implements LocationListener,
 	public void onLocationChanged(Location location) {
 		LatLng latlon = new LatLng(location.getLatitude(),
 				location.getLongitude());
-		
+		Log.i("posicion",location.getAccuracy()+" -"+location.getExtras().getInt("satellites"));
 		if (marker == null) {
 			
 			
@@ -210,7 +218,7 @@ public class Report extends Activity implements LocationListener,
 		} else {
 			marker.setPosition(latlon);
 		}
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 16), 200,
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 18), 200,
 				new CancelableCallback() {
 
 					@Override
@@ -246,10 +254,53 @@ public class Report extends Activity implements LocationListener,
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 			AppGlobal.getInstance().dispatcher.open(
 					Report.this,
-					"caegory", true);
+					"category", true);
 		}
 		return super.onKeyDown(keyCode, event);
 	}
 
+	public void startSession(){
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Para continuar y enviar su reporte debe iniciar sesión")
+				.setTitle(R.string.information_title)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setCancelable(false)
+				.setPositiveButton(R.string.error_acept,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								AppGlobal.getInstance().dispatcher.open(Report.this, "login",true);
+							}
+						});
+		final AlertDialog alert = builder.create();
+		alert.show();
+	}
 	
+	 public void onclicBtnBack(View v){
+		AppGlobal.getInstance().dispatcher.open(this, "category", true);
+	}
+	    
+    public void onClickBtnClose(View v){
+    	Exit.buildAlertExit(this);
+    }
+	   
+    public void onClickBtnOptions(View v){
+    	PreferencesController.getInstance().addPreferences("actualActivity", "report");
+		AppGlobal.getInstance().dispatcher.open(this, "options", true);
+    }
+    
+    @Override
+	protected void onStop() {
+
+		
+		
+		// mPreview.stop();
+		
+		locationManager.removeUpdates(this);
+	
+		// Requirements.getInstance().stop();
+		super.onStop();
+	}
 }

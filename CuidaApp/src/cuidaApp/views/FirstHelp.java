@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.bitmapfun.provider.Images;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,6 +26,7 @@ import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
 import cuidaApp.common.ListenerGPS;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.PreferencesController;
 import cuidaApp.util.AppGlobal;

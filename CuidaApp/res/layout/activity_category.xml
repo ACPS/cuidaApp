@@ -27,7 +27,8 @@
       android:shadowColor="#CCCCCC"
       android:shadowDx="2"
       android:shadowDy="2"
-      android:shadowRadius="2" />
+      android:shadowRadius="2"
+      android:visibility="invisible" />
 
 <Button
     android:id="@+id/top_bar_btn_close"

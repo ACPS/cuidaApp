@@ -51,6 +51,20 @@
                 android:textColor="#FFFFFF" />
 
             <Button
+                android:id="@+id/Button01"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/button1"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_btn_actives"
+                android:onClick="BtnActivos"
+                android:text="@string/activity_main_btn_actives"
+                android:textColor="#1E5A87"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/btn_help"
                 android:layout_width="260dp"
                 android:layout_height="50dp"

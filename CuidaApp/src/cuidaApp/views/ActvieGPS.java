@@ -34,14 +34,16 @@ public class ActvieGPS extends Activity{
 	protected void onResume() {
 		super.onResume();
 		if(CommonGlobals.getGPSStatus(this)){
-			ListenerGPS.getInstance().obtenerUbicacion(this);
+			
 			
 			if(Images.imageThumbUrls.size()==0){
+				ListenerGPS.getInstance().stopListener();
+				ListenerGPS.getInstance().obtenerUbicacion(this);
 				CommonGlobals.showProgess(this);
 				Handler handler = new Handler();
-				handler.postDelayed(getRunnableStartApp(), 1000);
+				handler.postDelayed(getRunnableStartApp(), 3000);
 			}else{
-				   CommonGlobals.hideProgess();
+				   //CommonGlobals.hideProgess();
 				   ListenerGPS.getInstance().stopListener();
 				   AppGlobal.getInstance().dispatcher.open(ActvieGPS.this, "category", true);
 				   

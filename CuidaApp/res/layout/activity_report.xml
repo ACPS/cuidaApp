@@ -5,10 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="370.5dp"
+        android:scaleType="centerCrop" 
+        android:src="@drawable/fondo_noche"/>
+
+    <Button
+        android:id="@+id/top_bar_btn_back"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_top_bar_back"
+        android:onClick="onclicBtnBack"
+        android:shadowColor="#CCCCCC"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:visibility="visible" />
+
+<Button
+    android:id="@+id/top_bar_btn_close"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_btn_top_bar_close"
+    android:onClick="onClickBtnClose"
+    android:shadowColor="#CCCCCC"
+    android:shadowDx="2"
+    android:shadowDy="2"
+    android:shadowRadius="2" />
+<Button
+    android:id="@+id/top_bar_btn_options"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_alignBaseline="@+id/top_bar_btn_close"
+    android:layout_alignBottom="@+id/top_bar_btn_close"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_toLeftOf="@+id/top_bar_btn_close"
+    android:background="@drawable/bg_btn_top_bar_options"
+    android:onClick="onClickBtnOptions"
+    android:shadowColor="#CCCCCC"
+    android:shadowDx="2"
+    android:shadowDy="2"
+    android:shadowRadius="2" />
+    
     <RelativeLayout
         android:id="@+id/container_title"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/top_bar_btn_options"
+        android:layout_marginTop="5dp"
         android:background="@drawable/fondo_topbar"
         android:orientation="vertical" >
 
@@ -38,12 +90,5 @@
         map:uiZoomControls="false"
         tools:ignore="MissingPrefix" >
     </fragment>
-
-    <ImageView
-        android:layout_width="335dp"
-        android:layout_height="370.5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="centerCrop" />
 
 </RelativeLayout>
