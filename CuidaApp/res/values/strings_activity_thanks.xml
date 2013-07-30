@@ -3,5 +3,5 @@
     
         <string name="activity_thank">Reporte\nentregado</string>
         <string name="activity_thank_report">Gracias, su reporte\nha sido enviado.</string>
-        <string name="activity_thank_btn">Volver al menú</string>
+        <string name="activity_thank_btn">Aceptar	</string>
 </resources>

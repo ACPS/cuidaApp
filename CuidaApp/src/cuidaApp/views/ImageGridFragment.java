@@ -40,6 +40,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cuidaapp.BuildConfig;
@@ -298,24 +299,41 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             }
 
             // Now handle the main ImageView thumbnails
-            ImageView imageView;
-            if (convertView == null) { // if it's not recycled, instantiate and initialize
-                imageView = new RecyclingImageView(mContext);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setLayoutParams(mImageViewLayoutParams);
-            } else { // Otherwise re-use the converted view
-                imageView = (ImageView) convertView;
-            }
-
-            // Check the height matches our calculated column width
-            if (imageView.getLayoutParams().height != mItemHeight) {
-                imageView.setLayoutParams(mImageViewLayoutParams);
-            }
+            View view; 
+            LayoutInflater inflater = (LayoutInflater)   getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+            view = inflater.inflate(R.layout.adapter_category, null);
+            
+            
+//            ImageView imageView;
+//            if (convertView == null) { // if it's not recycled, instantiate and initialize
+//                imageView = new RecyclingImageView(mContext);
+//                
+//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                imageView.setLayoutParams(mImageViewLayoutParams);
+//            } else { // Otherwise re-use the converted view
+//                imageView = (ImageView) convertView.findViewById(R.id.image_asset);
+//            }
+//
+//            // Check the height matches our calculated column width
+//            if (imageView.getLayoutParams().height != mItemHeight) {
+//                imageView.setLayoutParams(mImageViewLayoutParams);
+//            }
 
             // Finally load the image asynchronously into the ImageView, this also takes care of
             // setting a placeholder image while the background thread runs
-            InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), imageView);
-            return imageView;
+           // InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), imageView);
+            Log.i("aa,",position+"");
+           ImageView image=(ImageView)view.findViewById(R.id.image_asset);
+           if(position==3){
+        	   image.setBackgroundResource(R.drawable.canecas);
+           }else{
+        	   image.setBackgroundResource(R.drawable.alcantarilla);
+           }
+           TextView name= (TextView)view.findViewById(R.id.help);
+           
+           
+           name.setText(Images.imageThumbUrls.get(position - mNumColumns).getName());
+            return view;
         }
 
         /**

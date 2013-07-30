@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/image_asset"
+            android:layout_width="107dp"
+            android:layout_height="104dp"
+             />
+
+       <TextView
+           android:id="@+id/help"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_gravity="center_horizontal"
+           android:gravity="center"
+           android:shadowDx="2"
+           android:shadowDy="2"
+           android:shadowRadius="2"
+           android:text="Canecas"
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:textColor="#FFFFFF"
+           android:textSize="20sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
