@@ -51,7 +51,7 @@ public class ImageGridActivity extends FragmentActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (getSupportFragmentManager().findFragmentByTag(TAG) == null) {
             final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(android.R.id.content, new ImageGridFragment(), TAG);
+            ft.add(android.R.id.content, new ImageGridFragment2(), TAG);
             ft.commit();
             
         }

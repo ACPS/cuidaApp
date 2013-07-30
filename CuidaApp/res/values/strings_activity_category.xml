@@ -2,6 +2,6 @@
 
     <!-- Strings related to login -->
 	<string name="activity_category_title">Categorías</string>
-    <string name="activity_category_intro">Elige uno de los bienes\ndisponibles en esta ciudad.</string>
+    <string name="activity_category_intro">Elige una de las categorías\ndisponibles en tu ciudad: </string>
    
 </resources>

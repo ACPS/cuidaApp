@@ -83,9 +83,9 @@ public class SendingController {
 					.getInstance().getPreferences("token")));
 			entity.addPart("key", new StringBody(AppConfig.PUSHER_KEY));
 			entity.addPart("event[longitude]", new StringBody(ManagerController
-					.getInstance().getLongitude()));
+					.getInstance().getLongitude()+""));
 			entity.addPart("event[latitude]", new StringBody(ManagerController
-					.getInstance().getLatitude()));
+					.getInstance().getLatitude()+""));
 			entity.addPart("event[device_model]", new StringBody(
 					ManagerController.getInstance().PhoneModel + " - "
 							+ ManagerController.getInstance().AndroidVersion));

@@ -101,8 +101,19 @@
         android:horizontalSpacing="@dimen/image_thumbnail_spacing"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="@dimen/image_thumbnail_spacing" >
+        android:verticalSpacing="@dimen/image_thumbnail_spacing"
+        android:visibility="invisible" >
 
     </GridView>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/help"
+        android:layout_marginTop="20dp" >
+
+    </ListView>
 
 </RelativeLayout>

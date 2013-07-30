@@ -22,7 +22,7 @@ import android.util.Log;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
+
 import cuidaApp.models.Activo;
 import cuidaApp.models.IconMap;
 import cuidaApp.util.AppConfig;
@@ -47,13 +47,13 @@ public class MainController {
 	}
 	
 
-	public void loadCategory(final Context context){
+	public void loadCategory(final Context context, double latitud, double longitud){
 		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("lat", ListenerGPS.getInstance().latitud+""));
-		params.add(new BasicNameValuePair("lon", ListenerGPS.getInstance().longitud+""));
+		params.add(new BasicNameValuePair("lat", latitud+""));
+		params.add(new BasicNameValuePair("lon", longitud+""));
 	
-		CommonGlobals.showProgess(context);
+		//CommonGlobals.showProgess(context);
 		DoRest restloadCategory = new DoRest(AppConfig.CATEGORIES_URL,
 				Verbs.POST, params);
 		
@@ -76,7 +76,7 @@ public class MainController {
 					try {
 
 						response = new JSONObject(json_data_string);
-
+						ManagerController.getInstance().setCity(response.getString("city"));
 						if (response.getBoolean("status")) {
 							CommonGlobals.hideProgess();
 							JSONArray categories_json = response.getJSONArray("categories");

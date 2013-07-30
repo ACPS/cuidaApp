@@ -18,10 +18,10 @@ package cuidaApp.views;
 
 
 
+
 import android.annotation.TargetApi;
 import android.bitmapfun.provider.Categoria;
 import android.bitmapfun.provider.Images;
-import android.bitmapfun.ui.RecyclingImageView;
 import android.bitmapfun.util.ImageCache.ImageCacheParams;
 import android.content.Context;
 import android.os.Bundle;
@@ -33,17 +33,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cuidaapp.BuildConfig;
 import com.example.cuidaapp.R;
 
 import cuidaApp.controllers.ConfirmController;
@@ -61,21 +61,21 @@ import cuidaApp.controllers.PreferencesController;
  * cache is retained over configuration changes like orientation change so the images are populated
  * quickly if, for example, the user rotates the device.
  */
-public class ImageGridFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemClickListener {
     
 	private static final String TAG = "ImageGridFragment";
     private static final String IMAGE_CACHE_DIR = "thumbs";
 
     private int mImageThumbSize;
     private int mImageThumbSpacing;
-    private ImageAdapter mAdapter;
+    private AdapterCategory mAdapter;
   
     
 
     /**
      * Empty constructor as per the Fragment documentation
      */
-    public ImageGridFragment() {}
+    public ImageGridFragment2() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
         mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
         mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_spacing);
 
-        mAdapter = new ImageAdapter(getActivity());
+        mAdapter = new AdapterCategory(getActivity());
 
         ImageCacheParams cacheParams = new ImageCacheParams(getActivity(), IMAGE_CACHE_DIR);
 
@@ -110,17 +110,17 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View v = inflater.inflate(R.layout.activity_category, container, false);
-        TextView tv = (TextView)v.findViewById(R.id.lbl_information);
+        TextView tv = (TextView)v.findViewById(R.id.help);
         tv.setText(getActivity().getString(R.string.activity_category_intro)+" "+ManagerController.getInstance().getCity()+".");
-        
+//        Log.i("ciudad",ManagerController.getInstance().getCity()+"-"+tv);
         Button btn_options = (Button)v.findViewById(R.id.top_bar_btn_options);
         if(!PreferencesController.getInstance().isPrefences("active")){
         	btn_options.setVisibility(View.GONE);
         }
-        final GridView mGridView = (GridView) v.findViewById(R.id.gridview);
-        mGridView.setAdapter(mAdapter);
-        mGridView.setOnItemClickListener(this);
-        mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+        final ListView listView = (ListView) v.findViewById(R.id.listview);
+        listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(this);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 // Pause fetcher to ensure smoother scrolling when flinging
@@ -137,29 +137,44 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             }
         });
 
+        listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> arg0, View v, int position,
+					long id) {
+				
+//				v.setBackgroundColor(R.color.yellow);
+				Log.i("a","a");
+				AdapterCategory  selected=(AdapterCategory)listView.getItemAtPosition(position);
+				v.setBackgroundResource(R.drawable.item);
+				}
+			
+		});
+
+	
+    
+        
         // This listener is used to get the final width of the GridView and then calculate the
         // number of columns and the width of each column. The width of each column is variable
         // as the GridView has stretchMode=columnWidth. The column width is used to set the height
         // of each view so we get nice square thumbnails.
-        mGridView.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        if (mAdapter.getNumColumns() == 0) {
-                            final int numColumns = (int) Math.floor(
-                                    mGridView.getWidth() / (mImageThumbSize + mImageThumbSpacing));
-                            if (numColumns > 0) {
-                                final int columnWidth =
-                                        (mGridView.getWidth() / numColumns) - mImageThumbSpacing;
-                                mAdapter.setNumColumns(numColumns);
-                                mAdapter.setItemHeight(columnWidth);
-                                if (BuildConfig.DEBUG) {
-                                    Log.d(TAG, "onCreateView - numColumns set to " + numColumns);
-                                }
-                            }
-                        }
-                    }
-                });
+//        listView.getViewTreeObserver().addOnGlobalLayoutListener(
+//                new ViewTreeObserver.OnGlobalLayoutListener() {
+//                    @Override
+//                    public void onGlobalLayout() {
+//                        if (mAdapter.getNumColumns() == 0) {
+//                            final int numColumns = (int) Math.floor(
+//                            		listView.getWidth() / (mImageThumbSize + mImageThumbSpacing));
+//                            if (numColumns > 0) {
+//                                final int columnWidth =
+//                                        (listView.getWidth() / numColumns) - mImageThumbSpacing;
+//                                mAdapter.setNumColumns(numColumns);
+//                                mAdapter.setItemHeight(columnWidth);
+//                                if (BuildConfig.DEBUG) {
+//                                    Log.d(TAG, "onCreateView - numColumns set to " + numColumns);
+//                                }
+//                            }
+//                        }
+//                    }
+//                });
 
         return v;
     }
@@ -233,15 +248,16 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
      * columns in the GridView is used to create a fake top row of empty views as we use a
      * transparent ActionBar and don't want the real top row of images to start off covered by it.
      */
-    private class ImageAdapter extends BaseAdapter {
+    private class AdapterCategory extends BaseAdapter {
 
         private final Context mContext;
         private int mItemHeight = 0;
         private int mNumColumns = 0;
         private int mActionBarHeight = 0;
+        private int id=0;
         private GridView.LayoutParams mImageViewLayoutParams;
 
-        public ImageAdapter(Context context) {
+        public AdapterCategory(Context context) {
             super();
             mContext = context;
             mImageViewLayoutParams = new GridView.LayoutParams(
@@ -290,22 +306,8 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
 
         @Override
         public View getView(int position, View convertView, ViewGroup container) {
-            // First check if this is the top row
-            if (position < mNumColumns) {
-                if (convertView == null) {
-                    convertView = new View(mContext);
-                }
-                // Set empty view with height of ActionBar
-                convertView.setLayoutParams(new AbsListView.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, mActionBarHeight));
-                return convertView;
-            }
-
-            // Now handle the main ImageView thumbnails
-            View view; 
-            LayoutInflater inflater = (LayoutInflater)   getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
-            view = inflater.inflate(R.layout.adapter_category, null);
-            
+           
+          
             
 //            ImageView imageView;
 //            if (convertView == null) { // if it's not recycled, instantiate and initialize
@@ -325,56 +327,38 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
             // Finally load the image asynchronously into the ImageView, this also takes care of
             // setting a placeholder image while the background thread runs
            // InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), imageView);
-            Log.i("aa,",position+"");
-           ImageView image=(ImageView)view.findViewById(R.id.image_asset);
-          
-           TextView name= (TextView)view.findViewById(R.id.lbl_information);
-           
-           if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("hidrantes")){
-        	   image.setBackgroundResource(R.drawable.hidrantes);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("canecas")){
-        	   image.setBackgroundResource(R.drawable.canecas);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("manholes")){
-        	   image.setBackgroundResource(R.drawable.alcantarilla);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("toma de muestras")){
-        	   image.setBackgroundResource(R.drawable.tomademuestras);
-           }
-
-           name.setText(Images.imageThumbUrls.get(position - mNumColumns).getName());
-            return view;
             
-            //COMO ANTES
-            
-            // First check if this is the top row
-//            if (position < mNumColumns) {
-//                if (convertView == null) {
-//                    convertView = new View(mContext);
-//                }
-//                // Set empty view with height of ActionBar
-//                convertView.setLayoutParams(new AbsListView.LayoutParams(
-//                        ViewGroup.LayoutParams.MATCH_PARENT, mActionBarHeight));
-//                return convertView;
-//            }
-//
-//            // Now handle the main ImageView thumbnails
-//            ImageView imageView;
-//            if (convertView == null) { // if it's not recycled, instantiate and initialize
-//                imageView = new RecyclingImageView(mContext);
-//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//                imageView.setLayoutParams(mImageViewLayoutParams);
-//            } else { // Otherwise re-use the converted view
-//                imageView = (ImageView) convertView;
-//            }
-//
-//            // Check the height matches our calculated column width
-//            if (imageView.getLayoutParams().height != mItemHeight) {
-//                imageView.setLayoutParams(mImageViewLayoutParams);
-//            }
-//
-//            // Finally load the image asynchronously into the ImageView, this also takes care of
-//            // setting a placeholder image while the background thread runs
-//            InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), imageView);
-//            return imageView;
+    	  View view; 
+          LayoutInflater inflater = (LayoutInflater)   getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+          view = inflater.inflate(R.layout.adapter_category2, null);
+          ImageView image=(ImageView)view.findViewById(R.id.image_view_category);
+          TextView name= (TextView)view.findViewById(R.id.name_Category);
+          name.setText(Images.imageThumbUrls.get(position - mNumColumns).getName());
+        
+	        
+	        //COMO ANTES
+	        
+	      
+//	        // Now handle the main ImageView thumbnails
+//	        ImageView imageView;
+//	        if (convertView == null) { // if it's not recycled, instantiate and initialize
+//	            imageView = new RecyclingImageView(mContext);
+//	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//	            imageView.setLayoutParams(mImageViewLayoutParams);
+//	        } else { // Otherwise re-use the converted view
+//	            imageView = (ImageView) convertView;
+//	        }
+//	
+//	        // Check the height matches our calculated column width
+//	        if (imageView.getLayoutParams().height != mItemHeight) {
+//	            imageView.setLayoutParams(mImageViewLayoutParams);
+//	        }
+//	
+//	        // Finally load the image asynchronously into the ImageView, this also takes care of
+//	        // setting a placeholder image while the background thread runs
+          	image.setBackgroundResource(android.R.color.transparent);
+	        InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), image);
+	        return view;
         }
 
         /**

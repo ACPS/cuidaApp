@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import android.app.Application;
 import android.content.Context;
-import cuidaApp.common.ListenerGPS;
+
 import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
@@ -28,7 +28,7 @@ public class MainApplication extends Application {
 		MainApplication.context = getApplicationContext();
 
 		AppConfig.setProductionEnviroment();
-		ListenerGPS.getInstance().obtenerUbicacion(this);
+		
 		CacheMemoryController.getInstance(getResources());
 		
 		// // Get relevant data

@@ -22,12 +22,13 @@ public class ManagerController {
 	private Activo selectedActivo;
 	private Bitmap imageTemp;
 	private List<Bitmap> images;
-	private String latitude;
-	private String longitude;
+	private double latitude;
+	private double longitude;
 	private static ManagerController instance;
 	private String description;
 	private boolean responseEvent;
 	private boolean previewing;
+	private String city;
 	
 
 	public static ManagerController getInstance() {
@@ -41,19 +42,20 @@ public class ManagerController {
 		this.images = new LinkedList<Bitmap>();
 		this.selectedCategory = null;
 		this.previewing = false;
-		this.longitude = "0";
-		this.latitude = "0";
-		
+		this.longitude = 0;
+		this.latitude = 0;
+		this.city="";
 	}
 
 	public void reset() {
-		this.longitude = "0";
-		this.latitude = "0";
+		//this.longitude = 0;
+		//this.latitude = 0;
 		this.clearImages();
 		this.previewing = false;
 		this.selectedCategory = null;
 		this.description = "";
 		imageTemp=null;
+		this.city="";
 	}
 
 	public List<Bitmap> getImages() {
@@ -77,19 +79,19 @@ public class ManagerController {
 		  this.images.clear();
 	}
 
-	public String getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -154,4 +156,14 @@ public class ManagerController {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	
 }

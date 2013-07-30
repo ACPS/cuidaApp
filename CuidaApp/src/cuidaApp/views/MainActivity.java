@@ -20,7 +20,7 @@ import android.view.Window;
 import com.example.cuidaapp.R;
 import com.nerdcore.utils.CheckPermissionsUtils;
 
-import cuidaApp.common.ListenerGPS;
+//import cuidaApp.common.ListenerGPS;
 import cuidaApp.common.TopBar;
 import cuidaApp.controllers.MainController;
 import cuidaApp.util.AppGlobal;
@@ -49,16 +49,16 @@ public class MainActivity extends FragmentActivity {
 //		  AppGlobal.getInstance().dispatcher.open(this, "take", true);
 		if(Images.imageUrls.size()==0){
 			//si el gps esta encendido
-			if(getGPSStatus()){
-				if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
-					ListenerGPS.getInstance().stopListener();
-					MainController.getInstance().loadCategory(this);
-				}else{
-					ubicationNoFound();
-				}
-			}else{
-				activeGPS();
-			}
+//			if(getGPSStatus()){
+//				if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
+//					ListenerGPS.getInstance().stopListener();
+//					MainController.getInstance().loadCategory(this);
+//				}else{
+//					ubicationNoFound();
+//				}
+//			}else{
+//				activeGPS();
+//			}
 
 		}else{
 			AppGlobal.getInstance().dispatcher.open(this, "category", true);

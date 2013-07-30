@@ -2,9 +2,12 @@ package cuidaApp.views;
 
 import android.app.Activity;
 import android.bitmapfun.provider.Images;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
@@ -12,11 +15,13 @@ import android.view.Window;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
 import cuidaApp.controllers.MainController;
+import cuidaApp.controllers.ManagerController;
 import cuidaApp.util.AppGlobal;
 
-public class ActvieGPS extends Activity{
+public class ActvieGPS extends Activity  implements LocationListener{
+	
+	private LocationManager locationManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,37 +42,50 @@ public class ActvieGPS extends Activity{
 			
 			
 			if(Images.imageThumbUrls.size()==0){
-				ListenerGPS.getInstance().stopListener();
-				ListenerGPS.getInstance().obtenerUbicacion(this);
 				CommonGlobals.showProgess(this);
-				Handler handler = new Handler();
-				handler.postDelayed(getRunnableStartApp(), 3000);
+				locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+				locationManager.requestLocationUpdates(
+						LocationManager.GPS_PROVIDER, 0, 0, this);
 			}else{
-				   //CommonGlobals.hideProgess();
-				   ListenerGPS.getInstance().stopListener();
-				   AppGlobal.getInstance().dispatcher.open(ActvieGPS.this, "category", true);
-				   
+				AppGlobal.getInstance().dispatcher.open(ActvieGPS.this, "category", true); 
 			}
 			
 		}
 	}
 	
-	private Runnable getRunnableStartApp() {
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				
-				while(true){
-				if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
-							CommonGlobals.hideProgess();
-							ListenerGPS.getInstance().stopListener();
-							MainController.getInstance().loadCategory(ActvieGPS.this);
-							break;
-						}
-				}
-			}
-				
-			
-		};		return runnable;
+	
+
+	@Override
+	public void onLocationChanged(Location location) {
+		MainController.getInstance().loadCategory(ActvieGPS.this,location.getLatitude(),location.getLongitude());
+		locationManager.removeUpdates(this);
+		ManagerController.getInstance().setLatitude(location.getLatitude());
+		ManagerController.getInstance().setLongitude(location.getLongitude());
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		if(locationManager!=null){
+			locationManager.removeUpdates(this);
+		}
 	}
 }

@@ -11,7 +11,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -47,7 +47,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_send);
-		Log.i(TAG,"ONCREATE");
+		
 		camera_surface = (FrameLayout) findViewById(R.id.camera_surface);
 		
 		image_preview = (ImageView) findViewById(R.id.image_preview);
@@ -102,7 +102,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		handler.postDelayed(showOptions(), 1000);
 		
 		// btn_take_a_pic.setVisibility(View.GONE);
-		Log.i("SendReport",ManagerController.getInstance().getImageTemp()+"");
+		
 	}
 	
 	
@@ -145,7 +145,7 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		btn_cancel.setVisibility(option);
 		btn_done.setVisibility(option);
 		container_image_preview.setVisibility(option);
-		Log.i("show","aaaa");
+		
 	}
 	
 	public void Confirm(View v){

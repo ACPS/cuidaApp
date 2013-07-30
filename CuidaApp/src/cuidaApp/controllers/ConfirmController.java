@@ -20,7 +20,7 @@ import android.util.Log;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
+
 import cuidaApp.models.Activo;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
@@ -47,8 +47,8 @@ public class ConfirmController {
 		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("id_category", ManagerController.getInstance().getSelectedCategory().getId()+""));
-		params.add(new BasicNameValuePair("lat", ListenerGPS.getInstance().latitud+""));
-		params.add(new BasicNameValuePair("lon", ListenerGPS.getInstance().longitud+""));
+		params.add(new BasicNameValuePair("lat", ManagerController.getInstance().getLatitude()+""));
+		params.add(new BasicNameValuePair("lon", ManagerController.getInstance().getLongitude()+""));
 		
 		CommonGlobals.showProgess(context);
 		DoRest restloadCategory = new DoRest(AppConfig.ACTIVES_URL,

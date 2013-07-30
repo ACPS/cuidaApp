@@ -3,11 +3,6 @@ package cuidaApp.views;
 
 
 
-import android.app.AlertDialog;
-import android.bitmapfun.provider.Images;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,10 +19,6 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.cuidaapp.R;
 
-import cuidaApp.common.CommonGlobals;
-import cuidaApp.common.ListenerGPS;
-import cuidaApp.controllers.CacheMemoryController;
-import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.PreferencesController;
 import cuidaApp.util.AppGlobal;
 
@@ -271,43 +262,10 @@ public class FirstHelp extends  SherlockFragmentActivity  {
     }
     public void closeHelp(View v){
     	PreferencesController.getInstance().addPreferences("first", "first");
-    	if(Images.imageUrls.size()==0){
-			//si el gps esta encendido
-			if(CommonGlobals.getGPSStatus(this)){
-				if((ListenerGPS.getInstance().latitud!=0)&&(ListenerGPS.getInstance().longitud!=0)){
-					ListenerGPS.getInstance().stopListener();
-					MainController.getInstance().loadCategory(this);
-				}else{
-					ubicationNoFound();
-				}
-			}else{
-				Intent intent = new Intent(FirstHelp.this, ActvieGPS.class);
-		        startActivity(intent);
-		    	finish();
-			}
-
-		}else{
-			AppGlobal.getInstance().dispatcher.open(this, "category", true);
-		}
+    	AppGlobal.getInstance().dispatcher.open(this, "gps", true);
     }
   
     
-    private void ubicationNoFound(){
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(R.string.dialog_no_found_location_gps)
-				.setTitle(R.string.dialog_exit_title)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setCancelable(false)
-				.setPositiveButton(R.string.dialog_no_gps_acept,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-								dialog.dismiss();
-							}
-						});
-		final AlertDialog alert = builder.create();
-		alert.show();
-	}
+  
     
 }

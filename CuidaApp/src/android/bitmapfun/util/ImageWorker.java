@@ -87,7 +87,9 @@ public abstract class ImageWorker {
 
         if (value != null) {
             // Bitmap found in memory cache
+        	
             imageView.setImageDrawable(value);
+            
         } else if (cancelPotentialWork(data, imageView)) {
             final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
             final AsyncDrawable asyncDrawable =
@@ -333,6 +335,7 @@ public abstract class ImageWorker {
             }
 
             final ImageView imageView = getAttachedImageView();
+            
             if (value != null && imageView != null) {
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "onPostExecute - setting bitmap");

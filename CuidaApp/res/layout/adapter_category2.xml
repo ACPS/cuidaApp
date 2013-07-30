@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@drawable/separador" >
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/layout_separator" >
+
+        <ImageView
+            android:id="@+id/image_view_category"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/btn_go_category"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_arrow" />
+         
+         <TextView
+             android:id="@+id/name_Category"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:layout_toLeftOf="@id/btn_go_category"
+             android:layout_toRightOf="@id/image_view_category"
+             android:gravity="left|center_vertical"
+             android:text="Categoria 1"
+             android:textSize="20sp"
+             android:textStyle="bold" 
+             android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

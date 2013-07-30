@@ -10,6 +10,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -79,9 +81,7 @@ public class Report extends Activity implements LocationListener,
 
 		// Register the listener with the Location Manager to receive location
 		// updates
-		locationManager.requestLocationUpdates(
-				LocationManager.GPS_PROVIDER, 0, 0, this);
-
+		
 		
 
 //        ImageCacheParams cacheParams = new ImageCacheParams(this, IMAGE_CACHE_DIR);
@@ -181,6 +181,14 @@ public class Report extends Activity implements LocationListener,
 				});
 	}
 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		locationManager.requestLocationUpdates(
+				LocationManager.GPS_PROVIDER, 0, 0, this);
+
+		super.onResume();
+	}
 	
 	public Activo getActive(LatLng posicion){
 		
@@ -205,12 +213,14 @@ public class Report extends Activity implements LocationListener,
 	public void onLocationChanged(Location location) {
 		LatLng latlon = new LatLng(location.getLatitude(),
 				location.getLongitude());
-		Log.i("posicion",location.getAccuracy()+" -"+location.getExtras().getInt("satellites"));
+		ManagerController.getInstance().setLatitude(location.getLatitude());
+		ManagerController.getInstance().setLongitude(location.getLongitude());
+		
 		if (marker == null) {
 			
-			
+			Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.icon_map);
 			marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
-					"Posici—n actual"));
+					"Posición actual").icon(BitmapDescriptorFactory.fromBitmap(icon)));
 			
 			marker.setDraggable(true);
 			
@@ -239,6 +249,7 @@ public class Report extends Activity implements LocationListener,
 	public void onProviderEnabled(String provider) {
 	}
 
+	
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 	}
@@ -302,5 +313,12 @@ public class Report extends Activity implements LocationListener,
 	
 		// Requirements.getInstance().stop();
 		super.onStop();
+	}
+    
+    @Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+    	locationManager.removeUpdates(this);
+		super.onPause();
 	}
 }
