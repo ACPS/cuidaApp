@@ -137,7 +137,7 @@ public class Report extends Activity implements LocationListener,
 			latlon = new LatLng(act.getLat(),
 					act.getLon());
 			Bitmap icon=ManagerController.getInstance().getSelectedCategory().getNormal();
-			
+			Log.i("",""+act.getEstado());
 			if(act.getEstado().equalsIgnoreCase("normal")){
 				icon=ManagerController.getInstance().getSelectedCategory().getNormal();
 			}
@@ -150,7 +150,9 @@ public class Report extends Activity implements LocationListener,
 			if(act.getEstado().equalsIgnoreCase("repaired")){
 				icon=ManagerController.getInstance().getSelectedCategory().getRepaired();
 			}
-			
+			if(icon==null){
+				icon=ManagerController.getInstance().getSelectedCategory().getNormal();
+			}
 			if(icon!=null){
 				mMap.addMarker(new MarkerOptions().position(latlon).icon(BitmapDescriptorFactory.fromBitmap(icon)));
 			}else{
@@ -243,17 +245,17 @@ public class Report extends Activity implements LocationListener,
 		} else {
 			marker.setPosition(latlon);
 		}
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 18), 200,
-				new CancelableCallback() {
-
-					@Override
-					public void onFinish() {
-					}
-
-					@Override
-					public void onCancel() {
-					}
-				});
+//		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 18), 200,
+//				new CancelableCallback() {
+//
+//					@Override
+//					public void onFinish() {
+//					}
+//
+//					@Override
+//					public void onCancel() {
+//					}
+//				});
 	}
 
 	@Override

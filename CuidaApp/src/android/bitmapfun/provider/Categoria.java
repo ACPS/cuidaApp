@@ -104,6 +104,12 @@ public class Categoria {
 	}
 	
 	public void DownloadIcon(){
+		if(attended==null){
+			Log.e("aaa",icon_attended);
+			if(icon_attended!=null)
+				new ImageDownloaderAttended().execute(icon_attended);
+		}
+		
 		if(normal==null){
 			if(icon_normal!=null)
 				new ImageDownloaderNormal().execute(icon_normal);
@@ -118,10 +124,7 @@ public class Categoria {
 				new ImageDownloaderReported().execute(icon_reported);
 		}
 		
-		if(icon_attended==null){
-			if(icon_attended!=null)
-				new ImageDownloaderAttended().execute(icon_attended);
-		}
+		
 	}
 	private class ImageDownloaderNormal extends AsyncTask<String, Void, Bitmap> {
 
@@ -414,8 +417,8 @@ public class Categoria {
 						final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 						
 						
-						if(url.equalsIgnoreCase(icon_reported)){
-							reported=bitmap;
+						if(url.equalsIgnoreCase(icon_attended)){
+							attended=bitmap;
 						}
 						
 						return bitmap;

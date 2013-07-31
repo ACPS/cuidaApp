@@ -87,6 +87,7 @@ public class MainController {
 								JSONObject category = object.getJSONObject("category");
 								Log.i("MainController", category+"");
 								Categoria categoty_object = new Categoria(category.getInt("id")+"",category.getString("name"),category.getString("img"),category.getString("normal"),category.getString("reported"),category.getString("attended"),category.getString("repaired"));
+								categoty_object.DownloadIcon();
 								Images.addCategory(categoty_object);
 							}
 //							Images.init();

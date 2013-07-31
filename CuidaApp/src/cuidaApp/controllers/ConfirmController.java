@@ -50,6 +50,8 @@ public class ConfirmController {
 		params.add(new BasicNameValuePair("lat", ManagerController.getInstance().getLatitude()+""));
 		params.add(new BasicNameValuePair("lon", ManagerController.getInstance().getLongitude()+""));
 		
+		Log.i("lat",ManagerController.getInstance().getLatitude()+"");
+		Log.i("lon",ManagerController.getInstance().getLongitude()+"");
 		CommonGlobals.showProgess(context);
 		DoRest restloadCategory = new DoRest(AppConfig.ACTIVES_URL,
 				Verbs.POST, params);

@@ -367,10 +367,12 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
 				
 				@Override
 				public void onClick(View v) {
+					
 						Categoria Cat =Images.imageThumbUrls.get(pos - mNumColumns);
-				    	Cat.DownloadIcon();
+						Cat.DownloadIcon();
 				    	ManagerController.getInstance().setSelectedCategory(Cat);
 				    	ConfirmController.getInstance().loadActives(getActivity());
+				    	
 				}
 			});
 	       
