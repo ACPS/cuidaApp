@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 
 import com.example.cuidaapp.R;
@@ -35,7 +36,7 @@ public class ChangePassword extends FragmentActivity {
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_password);
 

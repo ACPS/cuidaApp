@@ -31,6 +31,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
@@ -39,6 +40,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -111,7 +113,7 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
 
         final View v = inflater.inflate(R.layout.activity_category, container, false);
         TextView tv = (TextView)v.findViewById(R.id.help);
-        tv.setText(getActivity().getString(R.string.activity_category_intro)+" "+ManagerController.getInstance().getCity()+".");
+        tv.setText(getActivity().getString(R.string.activity_category_intro)+" "+PreferencesController.getInstance().getPreferences("city")+".");
 //        Log.i("ciudad",ManagerController.getInstance().getCity()+"-"+tv);
         Button btn_options = (Button)v.findViewById(R.id.top_bar_btn_options);
         if(!PreferencesController.getInstance().isPrefences("active")){
@@ -358,6 +360,21 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
 //	        // setting a placeholder image while the background thread runs
           	image.setBackgroundResource(android.R.color.transparent);
 	        InternetCacheController.getInstance().getmImageFetcher().loadImage(Images.imageThumbUrls.get(position - mNumColumns).getUrl(), image);
+	      
+	        ImageButton btn_go_category= (ImageButton)view.findViewById(R.id.btn_go_category);
+	        final int pos =position;
+	        btn_go_category.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+						Categoria Cat =Images.imageThumbUrls.get(pos - mNumColumns);
+				    	Cat.DownloadIcon();
+				    	ManagerController.getInstance().setSelectedCategory(Cat);
+				    	ConfirmController.getInstance().loadActives(getActivity());
+				}
+			});
+	       
+	    	
 	        return view;
         }
 

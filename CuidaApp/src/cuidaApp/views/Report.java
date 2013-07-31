@@ -3,7 +3,6 @@ package cuidaApp.views;
 import java.text.DecimalFormat;
 import java.util.List;
 
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,7 +10,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -33,7 +31,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 import cuidaApp.common.Exit;
 import cuidaApp.controllers.ConfirmController;
@@ -60,7 +57,7 @@ public class Report extends Activity implements LocationListener,
 	
 		
 		// === Buttons
-
+		
 		
 		// === Map
 		Button btn_options= (Button)findViewById(R.id.top_bar_btn_options);
@@ -94,7 +91,25 @@ public class Report extends Activity implements LocationListener,
 //        mImageFetcher.setLoadingImage(R.drawable.empty_photo);
 //        mImageFetcher.addImageCache((FragmentManager)this, cacheParams);
         
+		
+		if((ManagerController.getInstance().getLatitude()!=0)&&(ManagerController.getInstance().getLatitude()!=0)){
+			LatLng latlon = new LatLng(ManagerController.getInstance().getLatitude(), ManagerController.getInstance().getLatitude());
+			if (marker == null) {
+				Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.icon_map);
+				marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
+						"Posición actual").icon(BitmapDescriptorFactory.fromBitmap(icon)));
+				
+				marker.setDraggable(true);
+				
+			
+			} else {
+				marker.setPosition(latlon);
+			}
+		}
+		
 		addMarkers();
+		
+		
 		
 	}
 

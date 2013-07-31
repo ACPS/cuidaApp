@@ -19,7 +19,7 @@ public class Thanks extends Activity {
 	}
 	
 	public void BtnMenu(View v){
-		  Intent intent = new Intent(Thanks.this, ImageGridActivity.class);
+		  Intent intent = new Intent(Thanks.this, ActvieGPS.class);
           startActivity(intent);
           finish();
 	}

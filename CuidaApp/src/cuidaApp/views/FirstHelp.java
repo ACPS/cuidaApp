@@ -3,6 +3,7 @@ package cuidaApp.views;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,7 +21,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.cuidaapp.R;
 
 import cuidaApp.controllers.PreferencesController;
-import cuidaApp.util.AppGlobal;
 
 
 public class FirstHelp extends  SherlockFragmentActivity  {
@@ -262,7 +262,10 @@ public class FirstHelp extends  SherlockFragmentActivity  {
     }
     public void closeHelp(View v){
     	PreferencesController.getInstance().addPreferences("first", "first");
-    	AppGlobal.getInstance().dispatcher.open(this, "gps", true);
+    	Intent intent = new Intent(FirstHelp.this, ActvieGPS.class);
+        startActivity(intent);
+    	finish();
+    	
     }
   
     

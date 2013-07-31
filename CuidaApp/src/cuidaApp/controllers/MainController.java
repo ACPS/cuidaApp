@@ -76,7 +76,8 @@ public class MainController {
 					try {
 
 						response = new JSONObject(json_data_string);
-						ManagerController.getInstance().setCity(response.getString("city"));
+						PreferencesController.getInstance().addPreferences("city", response.getString("city"));
+						
 						if (response.getBoolean("status")) {
 							CommonGlobals.hideProgess();
 							JSONArray categories_json = response.getJSONArray("categories");

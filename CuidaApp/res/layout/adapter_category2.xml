@@ -24,7 +24,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
-            android:background="@android:color/transparent" />
+            android:src="@drawable/empty_photo"/>
 
         <ImageButton
             android:id="@+id/btn_go_category"

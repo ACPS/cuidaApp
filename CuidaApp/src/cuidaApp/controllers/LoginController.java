@@ -112,7 +112,7 @@ public class LoginController {
 							JSONArray errors = response.getJSONArray("errors");
 							Trace.i(TAG, errors.toString());
 							CommonGlobals.hideProgess();
-//							CommonGlobals.show_alert(context, errors.get(0).toString());
+							CommonGlobals.show_alert(context, errors.get(0).toString());
 							
 						}
 

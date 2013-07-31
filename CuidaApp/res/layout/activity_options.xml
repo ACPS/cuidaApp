@@ -81,20 +81,6 @@
                 android:text="@string/activity_options_btn_help" />
 
             <Button
-                android:id="@+id/btnranking"
-                android:layout_width="260dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_btn_statistics"
-                android:gravity="top"
-                android:paddingLeft="80dp"
-                android:paddingTop="15dp"
-                android:shadowDx="2"
-                android:shadowDy="-2"
-                android:shadowRadius="2"
-                android:text="@string/activity_options_btn_statistics" />
-
-            <Button
                 android:id="@+id/Button01"
                 android:layout_width="260dp"
                 android:layout_height="50dp"

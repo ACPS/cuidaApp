@@ -3,12 +3,10 @@
  */
 package cuidaApp.controllers;
 
-import com.example.cuidaapp.R;
-
-import android.support.v4.app.FragmentManager;
 import android.bitmapfun.util.ImageCache.ImageCacheParams;
 import android.bitmapfun.util.ImageFetcher;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 /**
  * @author APALMERAS
@@ -36,7 +34,7 @@ public class InternetCacheController {
 			ImageCacheParams cacheParams) {
 		
 		mImageFetcher = new ImageFetcher(context, mImageThumbSize);
-        mImageFetcher.setLoadingImage(R.drawable.empty_photo);
+        //mImageFetcher.setLoadingImage(R.drawable.empty_photo);
         mImageFetcher.addImageCache(fragmentManager, cacheParams);
 		
 	}
