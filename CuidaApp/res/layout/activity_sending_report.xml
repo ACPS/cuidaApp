@@ -42,7 +42,7 @@
             android:id="@+id/img_sending"
             android:layout_width="161dp"
             android:layout_height="161dp"
-            android:src="@drawable/img_enviando" />
+             />
 
         <TextView
             android:id="@+id/TextView01"

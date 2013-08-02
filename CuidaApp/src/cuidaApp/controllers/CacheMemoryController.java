@@ -27,7 +27,7 @@ public class CacheMemoryController {
 	
 	private int[] graphicsId = {R.drawable.splash,R.drawable.fondo,R.drawable.help1,R.drawable.help2,R.drawable.help3,
 			R.drawable.fondo_noche, R.drawable.input_code, R.drawable.icon_map, R.drawable.btn_update_photo,
-			R.drawable.img_enviando
+			R.drawable.img_enviando, R.drawable.warning_gps
 			
 			
 

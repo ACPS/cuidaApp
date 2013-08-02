@@ -31,6 +31,9 @@ public class ActvieGPS extends Activity  implements LocationListener{
 		setContentView(R.layout.activity_warning_gps);
 		ImageView img= (ImageView)findViewById(R.id.img_night);
 		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo_noche, img);
+		
+		img= (ImageView)findViewById(R.id.image_asset);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.warning_gps, img);
 	}
 
 	public void ActiveGPS(View v){
