@@ -8,8 +8,9 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="370.5dp"
-        android:scaleType="centerCrop" 
-        android:src="@drawable/fondo_noche"/>
+        android:scaleType="centerCrop"
+        android:id="@+id/image_fondo" 
+        />
 
     <Button
         android:id="@+id/top_bar_btn_back"

@@ -14,6 +14,7 @@ import com.example.cuidaapp.R;
 
 import cuidaApp.common.CommonGlobals;
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.util.AppGlobal;
 
@@ -31,6 +32,7 @@ public class Confirm extends FragmentActivity {
 		preview.setImageBitmap(ManagerController.getInstance().getImageTemp());
 		
 		ImageView camera = (ImageView) findViewById(R.id.img_camera);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.btn_update_photo, camera);
 		camera.bringToFront();
 		
 		TextView tittle_category = (TextView) findViewById(R.id.tittle_category);
@@ -45,6 +47,11 @@ public class Confirm extends FragmentActivity {
 		}else{
 			address_active.setText("");
 		}
+		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
+		
+		
 		
 	}
 	

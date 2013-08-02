@@ -7,13 +7,13 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/ImageView1"
+        android:id="@+id/image_fondo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+        />
 
     <fragment
         android:id="@+id/top_bar"
@@ -40,7 +40,7 @@
         android:textSize="20sp" />
 
     <LinearLayout
-        android:id="@+id/LinearLayout1"
+        android:id="@+id/container_code_one"
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="false"
@@ -67,7 +67,7 @@
         android:id="@+id/LinearLayout2"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/LinearLayout1"
+        android:layout_below="@+id/container_code_one"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_input_medium"
         android:orientation="vertical" >

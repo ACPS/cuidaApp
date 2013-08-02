@@ -6,10 +6,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.RegisterController;
 
 public class Registrar extends FragmentActivity{
@@ -39,6 +41,9 @@ public class Registrar extends FragmentActivity{
 		repeatpassord = (EditText) findViewById(R.id.txt_repeatnewpa);
 		controller= new RegisterController();
 		TopBar.initializeTopBar(this, View.VISIBLE, View.INVISIBLE, View.VISIBLE, "login","registrar");
+		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 	
 	}
 	

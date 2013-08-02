@@ -5,10 +5,12 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.CodeProblemsController;
 
 public class CodeProblems extends FragmentActivity {
@@ -49,6 +51,9 @@ public class CodeProblems extends FragmentActivity {
 	}
 
 	private void initialize() {
+		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 		emailView = (EditText) findViewById(R.id.text_email);
 		TopBar.initializeTopBar(this, View.VISIBLE, View.GONE, View.VISIBLE,
 				"emailconfirmation", "codeproblems");

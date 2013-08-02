@@ -12,7 +12,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+        
+        android:id="@+id/image_fondo"/>
 
     <fragment
         android:id="@+id/top_bar"

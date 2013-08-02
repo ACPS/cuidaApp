@@ -8,6 +8,8 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import cuidaApp.controllers.CacheMemoryController;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -104,26 +106,36 @@ public class Categoria {
 	}
 	
 	public void DownloadIcon(){
-		if(attended==null){
-			Log.e("aaa",icon_attended);
-			if(icon_attended!=null)
-				new ImageDownloaderAttended().execute(icon_attended);
+		String attended_num= id+"1";
+		String nomal_num= id+"0";
+		String repaired_num= id+"2";
+		String reported_num= id+"3";
+		
+		if(!CacheMemoryController.getInstance().isCache(Integer.parseInt(attended_num))){
+			if(attended==null){
+				if(icon_attended!=null)
+					new ImageDownloaderAttended().execute(icon_attended);
+			}		
+		}
+		if(!CacheMemoryController.getInstance().isCache(Integer.parseInt(nomal_num))){
+			if(normal==null){
+				if(icon_normal!=null)
+					new ImageDownloaderNormal().execute(icon_normal);
+			}
+		}
+		if(!CacheMemoryController.getInstance().isCache(Integer.parseInt(repaired_num))){
+			if(repaired==null){
+				if (icon_repaired!=null)
+					new ImageDownloaderRepaired().execute(icon_repaired);
+			}
 		}
 		
-		if(normal==null){
-			if(icon_normal!=null)
-				new ImageDownloaderNormal().execute(icon_normal);
+		if(!CacheMemoryController.getInstance().isCache(Integer.parseInt(reported_num))){
+			if(reported==null){
+				if(icon_reported!=null)
+					new ImageDownloaderReported().execute(icon_reported);
+			}
 		}
-		if(repaired==null){
-			if (icon_repaired!=null)
-				new ImageDownloaderRepaired().execute(icon_repaired);
-		}
-		
-		if(reported==null){
-			if(icon_reported!=null)
-				new ImageDownloaderReported().execute(icon_reported);
-		}
-		
 		
 	}
 	private class ImageDownloaderNormal extends AsyncTask<String, Void, Bitmap> {
@@ -181,15 +193,10 @@ public class Categoria {
 						if(url.equalsIgnoreCase(icon_normal)){
 							normal=bitmap;
 						}
-						if(url.equalsIgnoreCase(icon_attended)){
-							attended=bitmap;
-						}
-						if(url.equalsIgnoreCase(icon_repaired)){
-							repaired=bitmap;
-						}
-						if(url.equalsIgnoreCase(icon_reported)){
-							reported=bitmap;
-						}
+						
+						String normal_num= id+"0";
+						CacheMemoryController.getInstance().addCache(Integer.parseInt(normal_num), bitmap);
+						
 						return bitmap;
 					} finally {
 						if (inputStream != null) {
@@ -265,6 +272,8 @@ public class Categoria {
 						
 						if(url.equalsIgnoreCase(icon_repaired)){
 							repaired=bitmap;
+							String repaired_num= id+"2";
+							CacheMemoryController.getInstance().addCache(Integer.parseInt(repaired_num), bitmap);
 						}
 						
 						return bitmap;
@@ -342,7 +351,10 @@ public class Categoria {
 						
 						if(url.equalsIgnoreCase(icon_reported)){
 							reported=bitmap;
+							String reported_num= id+"3";
+							CacheMemoryController.getInstance().addCache(Integer.parseInt(reported_num), bitmap);
 						}
+						
 						
 						return bitmap;
 					} finally {
@@ -419,6 +431,8 @@ public class Categoria {
 						
 						if(url.equalsIgnoreCase(icon_attended)){
 							attended=bitmap;
+							String attended_num= id+"1";
+							CacheMemoryController.getInstance().addCache(Integer.parseInt(attended_num), bitmap);
 						}
 						
 						return bitmap;

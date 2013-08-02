@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/help3" />
+        />
 
     <Button
         android:id="@+id/btn_continue"
@@ -24,10 +24,6 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_btn_send"
         android:onClick="closeHelp"
-        android:shadowColor="#164468"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="2"
         android:text="@string/activity_code_problems_btn_next"
         android:textColor="#1E5A87"
         android:textStyle="bold" />

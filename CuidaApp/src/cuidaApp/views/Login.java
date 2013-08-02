@@ -7,21 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.LoginController;
 
 public class Login extends Activity {
 	
 	private LoginController controller;
- @Override
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
-		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 		controller = new LoginController();
 	}
  

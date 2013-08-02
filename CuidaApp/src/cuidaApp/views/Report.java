@@ -14,12 +14,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import cuidaApp.common.Exit;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.controllers.PreferencesController;
@@ -54,7 +56,9 @@ public class Report extends Activity implements LocationListener,
 		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_report);
-	
+		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo_noche, img);
 		
 		// === Buttons
 		
@@ -95,7 +99,7 @@ public class Report extends Activity implements LocationListener,
 		if((ManagerController.getInstance().getLatitude()!=0)&&(ManagerController.getInstance().getLatitude()!=0)){
 			LatLng latlon = new LatLng(ManagerController.getInstance().getLatitude(), ManagerController.getInstance().getLatitude());
 			if (marker == null) {
-				Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.icon_map);
+				Bitmap icon = CacheMemoryController.getInstance().getBitmapFromMemCache(R.drawable.icon_map);
 				marker = mMap.addMarker(new MarkerOptions().position(latlon).title(
 						"Posición actual").icon(BitmapDescriptorFactory.fromBitmap(icon)));
 				
@@ -137,23 +141,36 @@ public class Report extends Activity implements LocationListener,
 			latlon = new LatLng(act.getLat(),
 					act.getLon());
 			Bitmap icon=ManagerController.getInstance().getSelectedCategory().getNormal();
-			Log.i("",""+act.getEstado());
+			
 			if(act.getEstado().equalsIgnoreCase("normal")){
-				icon=ManagerController.getInstance().getSelectedCategory().getNormal();
+				//icon=ManagerController.getInstance().getSelectedCategory().getNormal();
+				String num=ManagerController.getInstance().getSelectedCategory().getId()+"0";
+				icon=CacheMemoryController.getInstance().getBitmapFromMemCache(Integer.parseInt(num));
+				
 			}
 			if(act.getEstado().equalsIgnoreCase("reported")){
-				icon=ManagerController.getInstance().getSelectedCategory().getReported();
+				//icon=ManagerController.getInstance().getSelectedCategory().getReported();
+				String num=ManagerController.getInstance().getSelectedCategory().getId()+"3";
+				icon=CacheMemoryController.getInstance().getBitmapFromMemCache(Integer.parseInt(num));
+				
 			}
 			if(act.getEstado().equalsIgnoreCase("attended")){
-				icon=ManagerController.getInstance().getSelectedCategory().getAttended();
+				//icon=ManagerController.getInstance().getSelectedCategory().getAttended();
+				String num=ManagerController.getInstance().getSelectedCategory().getId()+"1";
+				icon=CacheMemoryController.getInstance().getBitmapFromMemCache(Integer.parseInt(num));
+				
 			}
 			if(act.getEstado().equalsIgnoreCase("repaired")){
-				icon=ManagerController.getInstance().getSelectedCategory().getRepaired();
+				//icon=ManagerController.getInstance().getSelectedCategory().getRepaired();
+				String num=ManagerController.getInstance().getSelectedCategory().getId()+"2";
+				icon=CacheMemoryController.getInstance().getBitmapFromMemCache(Integer.parseInt(num));
+				
 			}
 			if(icon==null){
 				icon=ManagerController.getInstance().getSelectedCategory().getNormal();
 			}
 			if(icon!=null){
+				
 				mMap.addMarker(new MarkerOptions().position(latlon).icon(BitmapDescriptorFactory.fromBitmap(icon)));
 			}else{
 				mMap.addMarker(new MarkerOptions().position(latlon));
@@ -167,7 +184,7 @@ public class Report extends Activity implements LocationListener,
 			@Override
 			public boolean onMarkerClick(Marker marker) {
 				
-				Log.i("REPORT",marker.getPosition().toString());
+				
 				Activo act = getActive(marker.getPosition());
 
 				if(act!=null){
@@ -177,15 +194,14 @@ public class Report extends Activity implements LocationListener,
 					}else{
 						startSession();
 					}
-				}else{
-					Log.i("REPORT","null");
 				}
 				
 				
 				return false;
 			}
 		});
-				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 18), 200,
+		
+				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlon, 22), 200,
 				new CancelableCallback() {
 
 					@Override

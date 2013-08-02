@@ -5,12 +5,8 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -83,7 +79,7 @@ public class Actives extends Activity implements
 			@Override
 			public boolean onMarkerClick(Marker marker) {
 
-				Log.i("REPORT", marker.getPosition().toString());
+				
 				Activo act = getActive(marker.getPosition());
 
 				if (act != null) {
@@ -91,7 +87,7 @@ public class Actives extends Activity implements
 					AppGlobal.getInstance().dispatcher.open(Actives.this,
 							"detail", true);
 				} else {
-					Log.i("REPORT", "null");
+					
 				}
 
 				return false;

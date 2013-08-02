@@ -21,7 +21,6 @@ package cuidaApp.views;
 import android.annotation.TargetApi;
 import android.bitmapfun.provider.Categoria;
 import android.bitmapfun.provider.Images;
-import android.bitmapfun.ui.RecyclingImageView;
 import android.bitmapfun.util.ImageCache.ImageCacheParams;
 import android.content.Context;
 import android.os.Bundle;
@@ -330,15 +329,15 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
           
            TextView name= (TextView)view.findViewById(R.id.lbl_information);
            
-           if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("hidrantes")){
-        	   image.setBackgroundResource(R.drawable.hidrantes);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("canecas")){
-        	   image.setBackgroundResource(R.drawable.canecas);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("manholes")){
-        	   image.setBackgroundResource(R.drawable.alcantarilla);
-           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("toma de muestras")){
-        	   image.setBackgroundResource(R.drawable.tomademuestras);
-           }
+//           if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("hidrantes")){
+//        	   image.setBackgroundResource(R.drawable.hidrantes);
+//           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("canecas")){
+//        	   image.setBackgroundResource(R.drawable.canecas);
+//           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("manholes")){
+//        	   image.setBackgroundResource(R.drawable.alcantarilla);
+//           }else if(Images.imageThumbUrls.get(position - mNumColumns).getName().equalsIgnoreCase("toma de muestras")){
+//        	   image.setBackgroundResource(R.drawable.tomademuestras);
+//           }
 
            name.setText(Images.imageThumbUrls.get(position - mNumColumns).getName());
             return view;

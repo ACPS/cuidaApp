@@ -8,13 +8,13 @@
    
 
     <ImageView
-        android:id="@+id/ImageView1"
+        android:id="@+id/image_fondo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+         />
 
     
     
@@ -39,7 +39,7 @@
             common:typeface="RobotoSlabBold" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_sending"
             android:layout_width="161dp"
             android:layout_height="161dp"
             android:src="@drawable/img_enviando" />

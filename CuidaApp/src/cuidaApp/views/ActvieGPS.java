@@ -11,10 +11,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
-
+import android.widget.ImageView;
 import com.example.cuidaapp.R;
-
 import cuidaApp.common.CommonGlobals;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.util.AppGlobal;
@@ -29,6 +29,8 @@ public class ActvieGPS extends Activity  implements LocationListener{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_warning_gps);
+		ImageView img= (ImageView)findViewById(R.id.img_night);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo_noche, img);
 	}
 
 	public void ActiveGPS(View v){

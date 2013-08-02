@@ -3,13 +3,14 @@
  */
 package cuidaApp.controllers;
 
-import com.example.cuidaapp.R;
-
 import android.bitmapfun.util.ImageResizer;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 import android.widget.ImageView;
+
+import com.example.cuidaapp.R;
 
 
 
@@ -23,7 +24,11 @@ public class CacheMemoryController {
 	
 	private LruCache<Integer, Bitmap> memoryCache;
 	
-	private int[] graphicsId = {R.drawable.help1,R.drawable.help2,R.drawable.help3
+	
+	private int[] graphicsId = {R.drawable.splash,R.drawable.fondo,R.drawable.help1,R.drawable.help2,R.drawable.help3,
+			R.drawable.fondo_noche, R.drawable.input_code, R.drawable.icon_map, R.drawable.btn_update_photo,
+			R.drawable.img_enviando
+			
 			
 
 	};
@@ -49,7 +54,8 @@ public class CacheMemoryController {
 
 		for (Integer id : graphicsId) {
 			Bitmap shape = ImageResizer.decodeSampledBitmapFromResource(
-					resources, id, 75, 75, null);
+					resources, id, 500, 500, null);
+			
 			this.memoryCache.put(id, shape);
 		}
 
@@ -60,11 +66,20 @@ public class CacheMemoryController {
 		return memoryCache.get(key);
 	}
 	
+	public boolean isCache(Integer key){
+		Log.i("cache",(memoryCache.get(key)!=null)+"");
+		return (memoryCache.get(key)!=null);
+	}
+	
+	public void addCache(Integer key, Bitmap shape){
+		Log.i("cache add","here");
+		this.memoryCache.put(key, shape);
+	}
+	
+	
 	public void loadBitmap(int resId, ImageView imageView) {
-
 		final Bitmap bitmap = getBitmapFromMemCache(resId);
 		imageView.setImageBitmap(bitmap);
-
 	}
 
 }

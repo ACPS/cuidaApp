@@ -25,6 +25,7 @@ import com.nerdcore.logs.Trace;
 
 import cuidaApp.common.CommonGlobals;
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.controllers.SurfaceController;
 import cuidaApp.util.AppGlobal;
@@ -64,6 +65,8 @@ public class SendReport extends FragmentActivity implements SensorEventListener 
 		mPreview = new SurfaceController(this);
 		camera_surface.addView(mPreview);
 		Trace.i(TAG, "onCreate");
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 	}
 	@Override
 	protected void onResume() {

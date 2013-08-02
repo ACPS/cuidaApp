@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+        android:id="@+id/image_fondo"  />
 
     <cuidaApp.common.TypefaceTextView
         android:id="@+id/tittle_category"

@@ -7,12 +7,12 @@
     android:orientation="vertical" xmlns:app1="http://schemas.android.com/apk/res/com.example.cuidaapp">
 
     <ImageView
-        android:id="@+id/ImageView1"
+        android:id="@+id/image_fond"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/fondo"
+        
         android:scaleType="centerCrop"
         app:ignore="ContentDescription" />
 

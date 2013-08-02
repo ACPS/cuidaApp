@@ -9,11 +9,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 import com.nerdcore.logs.Trace;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.EmailConfirmationController;
 import cuidaApp.util.AppGlobal;
 
@@ -36,6 +38,8 @@ public class EmailConfirmation extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_email_confirmation);
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 		inizialite();
 		
 	}

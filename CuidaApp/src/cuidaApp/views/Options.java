@@ -12,10 +12,12 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.MainController;
 import cuidaApp.controllers.OptionsController;
 import cuidaApp.controllers.PreferencesController;
@@ -51,7 +53,9 @@ public class Options extends FragmentActivity{
 						"actualActivity"), "options");
 		
 	
-
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
+		
 		initialize();
 	}
 	

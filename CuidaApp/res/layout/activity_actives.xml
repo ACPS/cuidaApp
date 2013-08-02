@@ -39,11 +39,4 @@
         tools:ignore="MissingPrefix" >
     </fragment>
 
-    <ImageView
-        android:layout_width="335dp"
-        android:layout_height="370.5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="centerCrop" />
-
 </RelativeLayout>

@@ -1,12 +1,7 @@
 package cuidaApp;
 
-import java.util.HashMap;
-
-
-
 import android.app.Application;
 import android.content.Context;
-
 import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.util.AppConfig;
 import cuidaApp.util.AppGlobal;
@@ -20,7 +15,7 @@ public class MainApplication extends Application {
 	
 	private static Context context;
 
-	public HashMap<String, String> phone_data;
+	
 
 	public void onCreate() {
 		super.onCreate();

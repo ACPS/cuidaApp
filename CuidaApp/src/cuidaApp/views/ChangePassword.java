@@ -4,6 +4,7 @@
 package cuidaApp.views;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
@@ -12,10 +13,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ChangePasswordController;
 import cuidaApp.util.AppGlobal;
 
@@ -40,7 +44,7 @@ public class ChangePassword extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_password);
 
-
+		
 		inizialite();
 		
 	}
@@ -54,6 +58,12 @@ public class ChangePassword extends FragmentActivity {
 		code_three = (EditText) findViewById(R.id.code_three);
 		code_four = (EditText) findViewById(R.id.code_four);
 		code_one.requestFocus();
+		ImageView img_fondo = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img_fondo);
+		
+		
+		
+		
 		TopBar.initializeTopBar(this, View.VISIBLE, View.GONE, View.VISIBLE, "login","changepassword");
 	
 		controler = new ChangePasswordController();

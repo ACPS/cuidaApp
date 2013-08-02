@@ -396,7 +396,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * @see #doInBackground
      * @see #onCancelled(Object)
      */
-    @SuppressWarnings({"UnusedDeclaration"})
+    
     protected void onPostExecute(Result result) {
     }
 
@@ -409,7 +409,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * @see #publishProgress
      * @see #doInBackground
      */
-    @SuppressWarnings({"UnusedDeclaration"})
+    
     protected void onProgressUpdate(Progress... values) {
     }
 
@@ -427,7 +427,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * @see #cancel(boolean)
      * @see #isCancelled()
      */
-    @SuppressWarnings({"UnusedParameters"})
+    
     protected void onCancelled(Result result) {
         onCancelled();
     }

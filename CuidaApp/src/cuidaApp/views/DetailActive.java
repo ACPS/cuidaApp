@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ManagerController;
 import cuidaApp.util.AppGlobal;
 
@@ -35,8 +36,9 @@ public class DetailActive extends FragmentActivity {
 			tittle_category.setText(ManagerController.getInstance().getSelectedActivo().getName_category());
 			address_active.setText(ManagerController.getInstance().getSelectedActivo().getAdress());
 		}
-		
-		
+			
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 		
 	}
 	

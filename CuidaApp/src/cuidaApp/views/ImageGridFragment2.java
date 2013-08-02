@@ -26,7 +26,7 @@ import android.bitmapfun.util.ImageCache.ImageCacheParams;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -48,6 +48,7 @@ import android.widget.Toast;
 
 import com.example.cuidaapp.R;
 
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ConfirmController;
 import cuidaApp.controllers.InternetCacheController;
 import cuidaApp.controllers.ManagerController;
@@ -113,6 +114,8 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
 
         final View v = inflater.inflate(R.layout.activity_category, container, false);
         TextView tv = (TextView)v.findViewById(R.id.help);
+        ImageView fondo = (ImageView)v.findViewById(R.id.image_fond);
+        fondo.setImageBitmap(CacheMemoryController.getInstance().getBitmapFromMemCache(R.drawable.fondo));
         tv.setText(getActivity().getString(R.string.activity_category_intro)+" "+PreferencesController.getInstance().getPreferences("city")+".");
 //        Log.i("ciudad",ManagerController.getInstance().getCity()+"-"+tv);
         Button btn_options = (Button)v.findViewById(R.id.top_bar_btn_options);
@@ -144,7 +147,7 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
 					long id) {
 				
 //				v.setBackgroundColor(R.color.yellow);
-				Log.i("a","a");
+				
 				AdapterCategory  selected=(AdapterCategory)listView.getItemAtPosition(position);
 				v.setBackgroundResource(R.drawable.item);
 				}
@@ -205,7 +208,7 @@ public class ImageGridFragment2 extends Fragment implements AdapterView.OnItemCl
     @TargetApi(16)
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-    	Log.i("",getActivity().getApplicationContext()+"");
+    	
     	Categoria Cat =(Categoria)parent.getItemAtPosition(position);
     	Cat.DownloadIcon();
     	ManagerController.getInstance().setSelectedCategory(Cat);

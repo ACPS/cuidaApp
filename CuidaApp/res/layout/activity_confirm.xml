@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+        android:id="@+id/image_fondo"  />
 
     <fragment
         android:id="@+id/top_bar"
@@ -54,7 +54,7 @@
                 android:layout_height="42dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/btn_update_photo"
+                
                 app:ignore="ContentDescription" />
 
             <ImageView

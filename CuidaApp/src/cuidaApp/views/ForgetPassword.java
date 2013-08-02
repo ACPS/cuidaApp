@@ -10,10 +10,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
 import cuidaApp.common.TopBar;
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.ForgetPasswordController;
 import cuidaApp.util.AppGlobal;
 
@@ -33,16 +35,15 @@ public class ForgetPassword extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_forget_password);
 		TopBar.initializeTopBar(this, View.VISIBLE, View.INVISIBLE, View.VISIBLE, "login","registrar");
-		
+		ImageView img = (ImageView)findViewById(R.id.image_fondo);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.fondo, img);
 		initialize();
-		//ForgetPasswordController.getInstance().requirements=requirements;
 	}
 
 	public void onClicNext(View view) {
 		String email = ((EditText) findViewById(R.id.text_email)).getText()
 				.toString();
 		controller.checkAndSendEmail(email, this);
-		// colocar progess
 	}
 	
 	

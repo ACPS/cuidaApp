@@ -395,7 +395,8 @@ public abstract class ImageWorker {
      * @param imageView
      * @param drawable
      */
-    private void setImageDrawable(ImageView imageView, Drawable drawable) {
+    @SuppressWarnings("deprecation")
+	private void setImageDrawable(ImageView imageView, Drawable drawable) {
         if (mFadeInBitmap) {
             // Transition drawable with a transparent drawable and the final drawable
             final TransitionDrawable td =

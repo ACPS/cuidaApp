@@ -10,16 +10,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.cuidaapp.R;
 
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.PreferencesController;
 
 
@@ -49,7 +51,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
         mAdapter = new MyAdapter(getSupportFragmentManager());
         
         
-        Log.i("Main","onCreate");
+        
         
    
 
@@ -61,7 +63,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
         mPager.setOnPageChangeListener(new OnPageChangeListener() {
         	  @Override
         	  public void onPageSelected(int index) {
-        	    Log.i("e", "onPageSelected " + index);
+        	    
         	   
         	  }
 
@@ -124,7 +126,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
          */
         @Override
         public void onCreate(Bundle savedInstanceState) {
-        	Log.i("Main", "OnCreateFragment"+mNum);
+        	
             super.onCreate(savedInstanceState);
             
             mNum = getArguments() != null ? getArguments().getInt("num") : 1;
@@ -148,14 +150,27 @@ public class FirstHelp extends  SherlockFragmentActivity  {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-        	Log.i("onCreateView", "onCreateView"+mNum);
-            View v = inflater.inflate(layouts[mNum], container, false);
+        	
+        	View v = inflater.inflate(layouts[mNum], container, false);
+        	ImageView image =(ImageView) v.findViewById(R.id.image_help_1);
+        	
+        	if(mNum==0){
+        		image =(ImageView) v.findViewById(R.id.image_help_1);
+        		CacheMemoryController.getInstance().loadBitmap(R.drawable.help1, image);
+        	}else if(mNum==1){
+        		image =(ImageView) v.findViewById(R.id.image_help_2);
+        		CacheMemoryController.getInstance().loadBitmap(R.drawable.help2, image);
+        	}else{
+        		image =(ImageView) v.findViewById(R.id.image_help_3);
+        		CacheMemoryController.getInstance().loadBitmap(R.drawable.help3, image);
+        	}
+            
             return v;
         }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
-        	Log.i("Main", "OnActivityCreated"+mNum);
+        	
         	mNum = getArguments() != null ? getArguments().getInt("num") : 1;
 //        	buildNav();
         	
@@ -178,11 +193,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
 
             @Override
             public Fragment getItem(int position) {
-            	
-            	//super.getItemId(position);
-            	
-            	Log.i("Main", "getItem"+position);
-            	
+
                 return ArrayListFragment.newInstance(position);
             }
             
@@ -215,22 +226,14 @@ public class FirstHelp extends  SherlockFragmentActivity  {
              */
             @Override
             public void onCreate(Bundle savedInstanceState) {
-            	Log.i("Main", "OnCreateFragment"+mNum);
+            	
                 super.onCreate(savedInstanceState);
                 
                 mNum = getArguments() != null ? getArguments().getInt("num") : 1;
-//                buildNav();
+
                 
             }
-            
-//            private void buildNav(){
-//            	
-//            	next = mNum;
-//                back = mNum;
-//                
-//                
-//                
-//            }
+
 
             /**
              * The Fragment's UI is just a simple text view showing its
@@ -239,7 +242,7 @@ public class FirstHelp extends  SherlockFragmentActivity  {
             @Override
             public View onCreateView(LayoutInflater inflater, ViewGroup container,
                     Bundle savedInstanceState) {
-            	Log.i("onCreateView", "onCreateView"+mNum);
+            	
             	View v = inflater.inflate(layouts[mNum], container, false);
             	
                 
@@ -248,10 +251,8 @@ public class FirstHelp extends  SherlockFragmentActivity  {
 
             @Override
             public void onActivityCreated(Bundle savedInstanceState) {
-            	Log.i("Main", "OnActivityCreated"+mNum);
-            	mNum = getArguments() != null ? getArguments().getInt("num") : 1;
-//            	buildNav();
             	
+            	mNum = getArguments() != null ? getArguments().getInt("num") : 1;
                 super.onActivityCreated(savedInstanceState);
             }
 

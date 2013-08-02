@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.example.cuidaapp.R;
 
+import cuidaApp.controllers.CacheMemoryController;
 import cuidaApp.controllers.PreferencesController;
 
 
@@ -24,6 +26,8 @@ public class Splashscreen extends Activity{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_splashscreen);
 		
+		ImageView img_splash = (ImageView)findViewById(R.id.img_splash);
+		CacheMemoryController.getInstance().loadBitmap(R.drawable.splash, img_splash);
 		Handler handler = new Handler();
 		handler.postDelayed(getRunnableStartApp(), 1000);
 	}

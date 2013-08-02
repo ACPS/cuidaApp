@@ -10,7 +10,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/fondo"
+        android:id="@+id/image_fondo"
         android:scaleType="centerCrop"
         app:ignore="ContentDescription" />
 
